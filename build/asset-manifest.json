@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/spoton/static/css/main.2097d9c7.chunk.css",
+    "main.js": "/spoton/static/js/main.120b5333.chunk.js",
+    "main.js.map": "/spoton/static/js/main.120b5333.chunk.js.map",
+    "runtime-main.js": "/spoton/static/js/runtime-main.aec3852c.js",
+    "runtime-main.js.map": "/spoton/static/js/runtime-main.aec3852c.js.map",
+    "static/js/2.69dee5b3.chunk.js": "/spoton/static/js/2.69dee5b3.chunk.js",
+    "static/js/2.69dee5b3.chunk.js.map": "/spoton/static/js/2.69dee5b3.chunk.js.map",
+    "index.html": "/spoton/index.html",
+    "precache-manifest.8cf5e2ec9eb4aa7b83f3eec4ea802c04.js": "/spoton/precache-manifest.8cf5e2ec9eb4aa7b83f3eec4ea802c04.js",
+    "service-worker.js": "/spoton/service-worker.js",
+    "static/css/main.2097d9c7.chunk.css.map": "/spoton/static/css/main.2097d9c7.chunk.css.map",
+    "static/js/2.69dee5b3.chunk.js.LICENSE.txt": "/spoton/static/js/2.69dee5b3.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/spoton/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aec3852c.js",
+    "static/js/2.69dee5b3.chunk.js",
+    "static/css/main.2097d9c7.chunk.css",
+    "static/js/main.120b5333.chunk.js"
+  ]
+}
