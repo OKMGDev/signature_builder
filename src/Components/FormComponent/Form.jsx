@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 export default class Form extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const {
@@ -43,13 +40,35 @@ export default class Form extends Component {
         </fieldset>
         <fieldset>
           <label>Company</label>
-          <select id="company" name="company" value={company} onChange={onCompanyChange}>
-            <option value="--">--</option>
-            <option value="Spot on Civil">Spot on Civil</option>
-            <option value="Spot on Power Projects">Spot on Power Projects</option>
-            <option value="North Vic Electricity Services">North Vic Electricity Services</option>
-            <option value="Spot on Civil + North Vic Electricity Services">Spot on Civil & North Vic Electricity</option>
-          </select>
+          <div className="company-checkboxes">
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="spot-on-civil"
+                checked={company.includes('Spot on Civil')}
+                onChange={(e) => onCompanyChange('Spot on Civil', e.target.checked)}
+              />
+              <label htmlFor="spot-on-civil">Spot on Civil</label>
+            </div>
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="spot-on-power-projects"
+                checked={company.includes('Spot on Power Projects')}
+                onChange={(e) => onCompanyChange('Spot on Power Projects', e.target.checked)}
+              />
+              <label htmlFor="spot-on-power-projects">Spot on Power Projects</label>
+            </div>
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="north-vic-electricity"
+                checked={company.includes('North Vic Electricity Services')}
+                onChange={(e) => onCompanyChange('North Vic Electricity Services', e.target.checked)}
+              />
+              <label htmlFor="north-vic-electricity">North Vic Electricity Services</label>
+            </div>
+          </div>
         </fieldset>
         <fieldset>
           <label>Mobile</label>

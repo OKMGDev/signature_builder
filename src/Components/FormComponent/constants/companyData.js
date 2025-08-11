@@ -23,17 +23,7 @@ export const COMPANY_LOGOS = {
     width: 125,
     height: 85
   },
-  'Spot on Civil + North Vic Electricity Services': {
-    src: 'https://spotongroup.com.au/wp-content/uploads/2025/08/logo-spoton-civil.png',
-    alt: 'Spot On Civil + North Vic Electricity Services',
-    isDual: true,
-    secondarySrc: 'https://okmg-digital-assets.s3.ap-southeast-2.amazonaws.com/SpotOnGroup/spot-on-north-vic-electric.png',
-    secondaryAlt: 'North Vic Electricity Services',
-    width: 140,
-    height: 85,
-    secondaryWidth: 125,
-    secondaryHeight: 85
-  }
+
 };
 
 export const COMPANY_WEBSITES = [

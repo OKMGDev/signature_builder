@@ -12,13 +12,7 @@ export default class SignaturePreview extends Component {
     };
   }
 
-  toolTipShow = () => {
-    this.props.onTooltipShow();
-  }
 
-  toolTipHide = () => {
-    this.props.onTooltipHide();
-  }
 
   openInstallationModal = () => {
     this.setState({ showInstallationModal: true });

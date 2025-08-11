@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ae26d044087f90b236ec950a9b46b6f6",
+    "revision": "feaa87c15dbf9f3521485d9766ca3a7c",
     "url": "/spoton/index.html"
   },
   {
-    "revision": "4e9b40df3f4bbcd76004",
-    "url": "/spoton/static/css/main.2097d9c7.chunk.css"
+    "revision": "c0e255b797cda2d27faa",
+    "url": "/spoton/static/css/main.511eead0.chunk.css"
   },
   {
     "revision": "b42002406e5db06a5ecd",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/spoton/static/js/2.69dee5b3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4e9b40df3f4bbcd76004",
-    "url": "/spoton/static/js/main.120b5333.chunk.js"
+    "revision": "c0e255b797cda2d27faa",
+    "url": "/spoton/static/js/main.d844b511.chunk.js"
   },
   {
     "revision": "8c4177280c6c65325454",

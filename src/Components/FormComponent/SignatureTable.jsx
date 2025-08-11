@@ -2,11 +2,23 @@ import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
 
 const SignatureTable = ({ name, job, company, mobile, email }) => {
-  const getCompanyLogo = (companyName) => {
-    return COMPANY_LOGOS[companyName] || null;
+  const getCompanyLogos = (companyNames) => {
+    if (!Array.isArray(companyNames) || companyNames.length === 0) {
+      return null;
+    }
+
+    const logos = companyNames.map(companyName => COMPANY_LOGOS[companyName]).filter(Boolean);
+
+    if (logos.length === 0) return null;
+    if (logos.length === 1) return logos[0];
+
+    return {
+      isMultiple: true,
+      logos: logos
+    };
   };
 
-  const companyLogo = getCompanyLogo(company);
+  const companyLogos = getCompanyLogos(company);
 
   return (
     <table
@@ -46,44 +58,35 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
           </td>
         </tr>
 
-        {companyLogo && (
+        {companyLogos && (
           <tr>
             <td style={{ paddingTop: '10px' }}>
-              {companyLogo.isDual ? (
-                <>
-                  <img
-                    src={companyLogo.src}
-                    alt="Spot On Civil"
-                    width={companyLogo.width}
-                    height={companyLogo.height}
-                    style={{
-                      width: `${companyLogo.width}px`,
-                      height: `${companyLogo.height}px`,
-                      marginRight: '15px',
-                      objectFit: 'contain'
-                    }}
-                  />
-                  <img
-                    src={companyLogo.secondarySrc}
-                    alt={companyLogo.secondaryAlt}
-                    width={companyLogo.secondaryWidth || companyLogo.width}
-                    height={companyLogo.secondaryHeight || companyLogo.height}
-                    style={{
-                      width: `${companyLogo.secondaryWidth || companyLogo.width}px`,
-                      height: `${companyLogo.secondaryHeight || companyLogo.height}px`,
-                      objectFit: 'contain'
-                    }}
-                  />
-                </>
+              {companyLogos.isMultiple ? (
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flexWrap: 'wrap' }}>
+                  {companyLogos.logos.map((logo, index) => (
+                    <img
+                      key={index}
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={logo.width}
+                      height={logo.height}
+                      style={{
+                        width: `${logo.width}px`,
+                        height: `${logo.height}px`,
+                        objectFit: 'contain'
+                      }}
+                    />
+                  ))}
+                </div>
               ) : (
                 <img
-                  src={companyLogo.src}
-                  alt={companyLogo.alt}
-                  width={companyLogo.width}
-                  height={companyLogo.height}
+                  src={companyLogos.src}
+                  alt={companyLogos.alt}
+                  width={companyLogos.width}
+                  height={companyLogos.height}
                   style={{
-                    width: `${companyLogo.width}px`,
-                    height: `${companyLogo.height}px`,
+                    width: `${companyLogos.width}px`,
+                    height: `${companyLogos.height}px`,
                     objectFit: 'contain'
                   }}
                 />

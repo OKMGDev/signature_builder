@@ -13,18 +13,13 @@ export default class FormComponent extends React.Component {
 
     // State.
     this.state = {
-      active: false,
-      company: '',
+      company: [],
       name: '',
       job: '',
-      phone: '',
       mobile: '',
       email: '',
       tooltip: '',
-      toolinfo: 'click to copy signature!',
-      color: '',
-      color_class: '',
-      pronoun: ''
+      toolinfo: 'click to copy signature!'
     };
   }
 
@@ -35,31 +30,25 @@ export default class FormComponent extends React.Component {
     });
   }
 
-  companyChange = (e) => {
-    let value = e.target.value;
-    this.setState({
-      company: value
-    })
-  }
+  companyChange = (companyName, isChecked) => {
+    this.setState(prevState => {
+      let newCompany = [...prevState.company];
 
-  toolTipShow = () => {
-    this.setState({
-      tooltip: 'active',
-    })
-  }
+      if (isChecked) {
+        // Add company if not already in array
+        if (!newCompany.includes(companyName)) {
+          newCompany.push(companyName);
+        }
+      } else {
+        // Remove company from array
+        newCompany = newCompany.filter(company => company !== companyName);
+      }
 
-  toolTipHide = () => {
-    this.setState({
-      tooltip: '',
-    })
-  }
-
-  phoneChange = (e) => {
-    let value = e.target.value;
-    this.setState({
-      phone: value
+      return { company: newCompany };
     });
   }
+
+
 
   mobileChange = (e) => {
     let value = e.target.value;
@@ -90,11 +79,10 @@ export default class FormComponent extends React.Component {
   }
 
   render() {
-    const { marginTop } = this.props;
-    const { name, job, company, mobile, email, tooltip, toolinfo, color_class } = this.state;
+    const { name, job, company, mobile, email, tooltip, toolinfo } = this.state;
 
     return (
-      <div className={color_class + " wrapper"}>
+      <div className="wrapper">
         <h1 style={{ paddingBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span>
             <img
