@@ -2,16 +2,22 @@ import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
 
 const SignatureTable = ({ name, job, company, mobile, email }) => {
-  const getCompanyLogos = (companyName) => {
+  const getCompanyLogo = (companyName) => {
     if (!companyName || companyName.trim() === '') {
-      return [];
+      return null;
     }
-
-    const logo = COMPANY_LOGOS[companyName];
-    return logo ? [logo] : [];
+    return COMPANY_LOGOS[companyName] || null;
   };
 
-  const companyLogos = getCompanyLogos(company);
+  const getCompanyWebsite = (companyName) => {
+    if (!companyName || companyName.trim() === '') {
+      return null;
+    }
+    return COMPANY_WEBSITES[companyName] || null;
+  };
+
+  const companyLogo = getCompanyLogo(company);
+  const companyWebsite = getCompanyWebsite(company);
 
   return (
     <table
@@ -51,47 +57,40 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
           </td>
         </tr>
 
-        {companyLogos.length > 0 && (
+        {companyWebsite && (
           <tr>
-            <td style={{ paddingTop: '10px' }}>
-              {companyLogos.map((logo, index) => (
-                <span key={index}>
-                  <img
-                    key={index}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={logo.width}
-                    height={logo.height}
-                    style={{
-                      width: `${logo.width}px`,
-                      height: `${logo.height}px`,
-                      objectFit: 'contain',
-                      display: 'inline-block',
-                      verticalAlign: 'middle',
-                    }}
-                  />
-                  &nbsp; &nbsp;
-                </span>
-              ))}
-            </td>
-          </tr>
-        )}
-
-        {COMPANY_WEBSITES.map((website, index) => (
-          <tr key={index}>
             <td style={SIGNATURE_STYLES.contact}>
               <a
-                href={website.url}
+                href={companyWebsite.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: '#000', textDecoration: 'none' }}
               >
-                {index === 0 && <br />}
-                {website.label}
+                {companyWebsite.label}
               </a>
             </td>
           </tr>
-        ))}
+        )}
+
+        {companyLogo && (
+          <tr>
+            <td style={{ paddingTop: '10px' }}>
+              <img
+                src={companyLogo.src}
+                alt={companyLogo.alt}
+                width={companyLogo.width}
+                height={companyLogo.height}
+                style={{
+                  width: `${companyLogo.width}px`,
+                  height: `${companyLogo.height}px`,
+                  objectFit: 'contain',
+                  display: 'inline-block',
+                  verticalAlign: 'middle',
+                }}
+              />
+            </td>
+          </tr>
+        )}
         <tr>
           <td style={SIGNATURE_STYLES.disclaimer}>
             <br />

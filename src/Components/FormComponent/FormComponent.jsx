@@ -13,7 +13,7 @@ export default class FormComponent extends React.Component {
 
     // State.
     this.state = {
-      company: '', // Set default company as empty string for dropdown
+      company: 'Hair Supplies', // Set default company to first option
       name: '',
       job: '',
       mobile: '',
