@@ -13,7 +13,7 @@ export default class FormComponent extends React.Component {
 
     // State.
     this.state = {
-      company: 'Hair Supplies', // Set default company to first option
+      selectedCompanies: ['New Me'], // Array of selected companies
       name: '',
       job: '',
       mobile: '',
@@ -30,9 +30,22 @@ export default class FormComponent extends React.Component {
     });
   }
 
-  companyChange = (companyName) => {
-    this.setState({
-      company: companyName
+  companyChange = (companyName, isChecked) => {
+    this.setState(prevState => {
+      if (isChecked) {
+        // Add company to selected list if not already present
+        if (!prevState.selectedCompanies.includes(companyName)) {
+          return {
+            selectedCompanies: [...prevState.selectedCompanies, companyName]
+          };
+        }
+      } else {
+        // Remove company from selected list
+        return {
+          selectedCompanies: prevState.selectedCompanies.filter(company => company !== companyName)
+        };
+      }
+      return prevState; // No change if company already in list and being added
     });
   }
 
@@ -67,17 +80,17 @@ export default class FormComponent extends React.Component {
   }
 
   render() {
-    const { name, job, company, mobile, email, tooltip, toolinfo } = this.state;
+    const { name, job, selectedCompanies, mobile, email, tooltip, toolinfo } = this.state;
 
     return (
       <div className="wrapper">
         <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <span>
             <img
-              src="https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hs-larger.png?v=1757399448"
+              src="https://cdn.prod.website-files.com/6639be971dc3625ee145fd74/68bfeaf6b60ac326a3bce9a1_newme.png"
               width={250}
               style={{ "marginBottom": "5px" }}
-              alt="Hair Supplies Logo"
+              alt="New Me Logo"
             />
           </span>
           <span>Signature Generator</span>
@@ -87,7 +100,7 @@ export default class FormComponent extends React.Component {
           <p>
             Welcome to your custom signature generator, designed and hosted by OKMG.
           </p>
-          <p>Complete the fields below to prepare your email signature. Select a company from the dropdown to display the relevant logo in your signature.
+          <p>Complete the fields below to prepare your email signature. Select one or more companies using the checkboxes to display the relevant logos in your signature.
           </p>
           <p>For any support enquiries, please contact web@okmg.com - Thank you!
           </p>
@@ -99,7 +112,7 @@ export default class FormComponent extends React.Component {
           <Form
             name={name}
             job={job}
-            company={company}
+            selectedCompanies={selectedCompanies}
             mobile={mobile}
             email={email}
             onNameChange={this.nameChange}
@@ -112,7 +125,7 @@ export default class FormComponent extends React.Component {
           <SignaturePreview
             name={name}
             job={job}
-            company={company}
+            selectedCompanies={selectedCompanies}
             mobile={mobile}
             email={email}
             tooltip={tooltip}

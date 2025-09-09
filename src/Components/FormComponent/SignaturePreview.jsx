@@ -41,7 +41,7 @@ export default class SignaturePreview extends Component {
   }
 
   render() {
-    const { name, job, company, mobile, email, tooltip, toolinfo } = this.props;
+    const { name, job, selectedCompanies, mobile, email, tooltip, toolinfo } = this.props;
     const { showInstallationModal, activeTab } = this.state;
 
     return (
@@ -53,7 +53,7 @@ export default class SignaturePreview extends Component {
           <SignatureTable
             name={name}
             job={job}
-            company={company}
+            selectedCompanies={selectedCompanies}
             mobile={mobile}
             email={email}
           />

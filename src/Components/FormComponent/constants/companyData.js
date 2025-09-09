@@ -1,26 +1,26 @@
 export const COMPANY_LOGOS = {
-  'Hair Supplies': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hs-larger.png?v=1757399448',
-    alt: 'Hair Supplies',
-    width: 250,
+  'New Me': {
+    src: 'https://cdn.prod.website-files.com/6639be971dc3625ee145fd74/68bfeaf6b60ac326a3bce9a1_newme.png',
+    alt: 'New Me',
+    width: 200,
     height: 60
   },
-  'Hair Online': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hair-online.png?v=1757399091',
-    alt: 'Hair Online',
-    width: 140,
+  'Allieve': {
+    src: 'https://cdn.prod.website-files.com/6639be971dc3625ee145fd74/68bfeaf6f510c2f697bcb768_allieve.png',
+    alt: 'Allieve',
+    width: 200,
     height: 60
   }
 };
 
 export const COMPANY_WEBSITES = {
-  'Hair Supplies': {
-    url: 'https://hairsupplies.com.au/',
-    label: 'www.hairsupplies.com.au'
+  'New Me': {
+    url: 'https://www.newme.com.au/',
+    label: 'www.newme.com.au'
   },
-  'Hair Online': {
-    url: 'https://haironline.com.au',
-    label: 'www.haironline.com.au'
+  'Allieve': {
+    url: 'https://www.allieve.com.au/',
+    label: 'www.allieve.com.au'
   }
 };
 
@@ -34,7 +34,7 @@ export const SIGNATURE_STYLES = {
   job: {
     fontSize: '9pt',
     textTransform: 'capitalize',
-    color: '#B2CB23'
+    color: '#E55238'
   },
   contact: {
     fontSize: '9pt'

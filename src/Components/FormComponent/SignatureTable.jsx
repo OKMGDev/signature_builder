@@ -1,7 +1,7 @@
 import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
 
-const SignatureTable = ({ name, job, company, mobile, email }) => {
+const SignatureTable = ({ name, job, selectedCompanies, mobile, email }) => {
   const getCompanyLogo = (companyName) => {
     if (!companyName || companyName.trim() === '') {
       return null;
@@ -16,8 +16,9 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
     return COMPANY_WEBSITES[companyName] || null;
   };
 
-  const companyLogo = getCompanyLogo(company);
-  const companyWebsite = getCompanyWebsite(company);
+  // Get logos and websites for all selected companies
+  const selectedLogos = selectedCompanies.map(company => getCompanyLogo(company)).filter(Boolean);
+  const selectedWebsites = selectedCompanies.map(company => getCompanyWebsite(company)).filter(Boolean);
 
   return (
     <table
@@ -57,37 +58,47 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
           </td>
         </tr>
 
-        {companyWebsite && (
+        {selectedWebsites.length > 0 && (
           <tr>
             <td style={SIGNATURE_STYLES.contact}>
-              <a
-                href={companyWebsite.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: '#000', textDecoration: 'none' }}
-              >
-                {companyWebsite.label}
-              </a>
+              {selectedWebsites.map((website, index) => (
+                <div key={index}>
+                  <a
+                    href={website.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: '#000', textDecoration: 'none' }}
+                  >
+                    {website.label}
+                  </a>
+                  {index < selectedWebsites.length - 1 && <br />}
+                </div>
+              ))}
             </td>
           </tr>
         )}
 
-        {companyLogo && (
+        {selectedLogos.length > 0 && (
           <tr>
             <td style={{ paddingTop: '10px' }}>
-              <img
-                src={companyLogo.src}
-                alt={companyLogo.alt}
-                width={companyLogo.width}
-                height={companyLogo.height}
-                style={{
-                  width: `${companyLogo.width}px`,
-                  height: `${companyLogo.height}px`,
-                  objectFit: 'contain',
-                  display: 'inline-block',
-                  verticalAlign: 'middle',
-                }}
-              />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
+                {selectedLogos.map((logo, index) => (
+                  <img
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    style={{
+                      width: `${logo.width}px`,
+                      height: `${logo.height}px`,
+                      objectFit: 'contain',
+                      display: 'inline-block',
+                      verticalAlign: 'middle',
+                    }}
+                  />
+                ))}
+              </div>
             </td>
           </tr>
         )}

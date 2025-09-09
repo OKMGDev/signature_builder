@@ -6,7 +6,7 @@ export default class Form extends Component {
     const {
       name,
       job,
-      company,
+      selectedCompanies,
       mobile,
       email,
       onNameChange,
@@ -40,17 +40,27 @@ export default class Form extends Component {
           />
         </fieldset>
         <fieldset>
-          <label>Company</label>
-          <select
-            id="company"
-            name="company"
-            value={company}
-            onChange={(e) => onCompanyChange(e.target.value)}
-          >
-            <option value="">Select a company</option>
-            <option value="Hair Supplies">Hair Supplies</option>
-            <option value="Hair Online">Hair Online</option>
-          </select>
+          <label>Companies</label>
+          <div className="company-checkboxes">
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="new-me"
+                checked={selectedCompanies.includes('New Me')}
+                onChange={(e) => onCompanyChange('New Me', e.target.checked)}
+              />
+              <label htmlFor="new-me">New Me</label>
+            </div>
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="allieve"
+                checked={selectedCompanies.includes('Allieve')}
+                onChange={(e) => onCompanyChange('Allieve', e.target.checked)}
+              />
+              <label htmlFor="allieve">Allieve</label>
+            </div>
+          </div>
         </fieldset>
         <fieldset>
           <label>Mobile</label>

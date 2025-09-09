@@ -258,36 +258,98 @@ form {
 			.checkbox-item {
 				display: flex;
 				align-items: center;
-				background: rgba(255, 255, 255, 0.7);
-				border-radius: 5px;
-				border: 1px solid #eee;
-				transition: all 0.2s ease;
-				padding-left: 8px;
+				background: rgba(255, 255, 255, 0.8);
+				border-radius: 8px;
+				border: 2px solid #e0e0e0;
+				transition: all 0.3s ease;
+				padding: 0;
+				position: relative;
+				overflow: hidden;
 
 				&:hover {
-					background: rgba(255, 255, 255, 0.9);
+					background: rgba(255, 255, 255, 0.95);
 					border-color: #265aa8;
+					transform: translateY(-1px);
+					box-shadow: 0 4px 12px rgba(38, 90, 168, 0.15);
+				}
+
+				&:has(input:checked) {
+					background: rgba(38, 90, 168, 0.1);
+					border-color: #265aa8;
+					box-shadow: 0 2px 8px rgba(38, 90, 168, 0.2);
 				}
 
 				input[type="checkbox"] {
-					width: 18px;
-					height: 18px;
+					width: 20px;
+					height: 20px;
 					margin: 0;
 					cursor: pointer;
 					accent-color: #265aa8;
+					margin-left: 12px;
+					margin-right: 8px;
+					transition: all 0.2s ease;
+
+					&:hover {
+						transform: scale(1.1);
+					}
+
+					&:checked {
+						transform: scale(1.05);
+					}
 				}
 
 				label {
 					margin: 0;
-					padding: 0;
+					padding: 12px 16px 12px 0;
 					font-size: 14px;
-					font-weight: 500;
+					font-weight: 600;
 					color: #333;
 					cursor: pointer;
 					user-select: none;
-					padding: 8px 12px;
 					flex-grow: 1;
+					transition: color 0.2s ease;
+
+					&:hover {
+						color: #265aa8;
+					}
 				}
+
+				// Add a subtle animation for checked state
+				&:has(input:checked) label {
+					color: #265aa8;
+					font-weight: 700;
+				}
+
+				// Add a small indicator for checked items
+				&:has(input:checked)::after {
+					content: '';
+					position: absolute;
+					right: 12px;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 6px;
+					height: 6px;
+					background: #265aa8;
+					border-radius: 50%;
+					animation: checkPulse 0.6s ease-out;
+				}
+			}
+		}
+
+		@keyframes checkPulse {
+			0% {
+				transform: translateY(-50%) scale(0);
+				opacity: 0;
+			}
+
+			50% {
+				transform: translateY(-50%) scale(1.5);
+				opacity: 0.8;
+			}
+
+			100% {
+				transform: translateY(-50%) scale(1);
+				opacity: 1;
 			}
 		}
 	}
@@ -610,15 +672,24 @@ form {
 				gap: 10px;
 
 				.checkbox-item {
-					padding: 6px 10px;
+					padding: 0;
 
 					input[type="checkbox"] {
-						width: 16px;
-						height: 16px;
+						width: 18px;
+						height: 18px;
+						margin-left: 10px;
+						margin-right: 6px;
 					}
 
 					label {
 						font-size: 13px;
+						padding: 10px 14px 10px 0;
+					}
+
+					&:has(input:checked)::after {
+						right: 10px;
+						width: 5px;
+						height: 5px;
 					}
 				}
 			}
@@ -740,15 +811,24 @@ form {
 				gap: 8px;
 
 				.checkbox-item {
-					padding: 5px 8px;
+					padding: 0;
 
 					input[type="checkbox"] {
-						width: 15px;
-						height: 15px;
+						width: 16px;
+						height: 16px;
+						margin-left: 8px;
+						margin-right: 4px;
 					}
 
 					label {
 						font-size: 12px;
+						padding: 8px 12px 8px 0;
+					}
+
+					&:has(input:checked)::after {
+						right: 8px;
+						width: 4px;
+						height: 4px;
 					}
 				}
 			}
