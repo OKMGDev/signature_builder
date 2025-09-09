@@ -41,42 +41,16 @@ export default class Form extends Component {
         </fieldset>
         <fieldset>
           <label>Company</label>
-          <div className="company-checkboxes">
-
-            <div className="checkbox-item">
-              <input
-                type="checkbox"
-                id="north-vic-electricity"
-                name="company"
-                value="North Vic Electricity"
-                checked={company.includes('North Vic Electricity')}
-                onChange={(e) => onCompanyChange(e.target.value, e.target.checked)}
-              />
-              <label htmlFor="north-vic-electricity">North Vic Electricity</label>
-            </div>
-            <div className="checkbox-item">
-              <input
-                type="checkbox"
-                id="spot-on-civil"
-                name="company"
-                value="Spot on Civil"
-                checked={company.includes('Spot on Civil')}
-                onChange={(e) => onCompanyChange(e.target.value, e.target.checked)}
-              />
-              <label htmlFor="spot-on-civil">Spot on Civil</label>
-            </div>
-            {/* <div className="checkbox-item">
-              <input
-                type="checkbox"
-                id="spot-on-power"
-                name="company"
-                value="Spot on Power"
-                checked={company.includes('Spot on Power')}
-                onChange={(e) => onCompanyChange(e.target.value, e.target.checked)}
-              />
-              <label htmlFor="spot-on-power">Spot on Power</label>
-            </div> */}
-          </div>
+          <select
+            id="company"
+            name="company"
+            value={company}
+            onChange={(e) => onCompanyChange(e.target.value)}
+          >
+            <option value="">Select a company</option>
+            <option value="Hair Supplies">Hair Supplies</option>
+            <option value="Hair Online">Hair Online</option>
+          </select>
         </fieldset>
         <fieldset>
           <label>Mobile</label>

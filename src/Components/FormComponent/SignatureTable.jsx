@@ -2,15 +2,13 @@ import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
 
 const SignatureTable = ({ name, job, company, mobile, email }) => {
-  const getCompanyLogos = (companyNames) => {
-    if (!companyNames || !Array.isArray(companyNames) || companyNames.length === 0) {
+  const getCompanyLogos = (companyName) => {
+    if (!companyName || companyName.trim() === '') {
       return [];
     }
 
-    return companyNames
-      .filter(companyName => companyName && companyName.trim() !== '')
-      .map(companyName => COMPANY_LOGOS[companyName])
-      .filter(logo => logo !== undefined);
+    const logo = COMPANY_LOGOS[companyName];
+    return logo ? [logo] : [];
   };
 
   const companyLogos = getCompanyLogos(company);
