@@ -1,44 +1,38 @@
 export const COMPANY_LOGOS = {
-  '--': {
-    src: 'https://okmg-digital-assets.s3.ap-southeast-2.amazonaws.com/SpotOnGroup/Placeholder_view_vector.svg.png',
-    alt: 'Spot On Civil',
-    width: 140,
-    height: 85
-  },
-  'Spot on Civil': {
-    src: 'https://spotongroup.com.au/wp-content/uploads/2025/08/logo-spoton-civil.png',
-    alt: 'Spot On Civil',
-    width: 150,
-    height: 85
-  },
-  'Spot on Power Projects': {
-    src: 'https://okmg-digital-assets.s3.ap-southeast-2.amazonaws.com/SpotOnGroup/spot-on-power-projects.png',
-    alt: 'Spot On Power Projects',
-    width: 130,
-    height: 85
-  },
-  'North Vic Electricity Services': {
+  'North Vic Electricity': {
     src: 'https://okmg-digital-assets.s3.ap-southeast-2.amazonaws.com/SpotOnGroup/spot-on-north-vic-electric.png',
-    alt: 'North Vic Electricity Services',
+    alt: 'North Vic Electricity',
     width: 125,
     height: 85
   },
-
+  'Spot on Civil': {
+    src: 'https://spotongroup.com.au/wp-content/uploads/2025/08/Group-1-1.png',
+    alt: 'Spot On Civil',
+    width: 125,
+    height: 85
+  },
+  // 'Spot on Power': {
+  //   src: 'https://okmg-digital-assets.s3.ap-southeast-2.amazonaws.com/SpotOnGroup/spot-on-power-projects.png',
+  //   alt: 'Spot On Power',
+  //   width: 125,
+  //   height: 85
+  // }
 };
 
 export const COMPANY_WEBSITES = [
   {
-    url: 'https://spotonpower.com.au',
-    label: 'spotonpower.com.au'
+    url: 'https://northvicelectricity.com.au/',
+    label: 'www.northvicelectricity.com.au'
   },
   {
-    url: 'https://spotongroup.com.au/',
-    label: 'spotongroup.com.au'
+    url: 'https://spotongroup.com.au',
+    label: 'www.spotongroup.com.au'
   },
-  {
-    url: 'https://northvicelectrcity.com.au',
-    label: 'northvicelectrcity.com.au'
-  }
+  // {
+  //   url: 'https://spotonpower.com.au',
+  //   label: 'www.spotonpower.com.au'
+  // },
+
 ];
 
 export const SIGNATURE_STYLES = {

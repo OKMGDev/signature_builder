@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/spoton/static/css/main.511eead0.chunk.css",
-    "main.js": "/spoton/static/js/main.d844b511.chunk.js",
-    "main.js.map": "/spoton/static/js/main.d844b511.chunk.js.map",
+    "main.css": "/spoton/static/css/main.8c9ee276.chunk.css",
+    "main.js": "/spoton/static/js/main.f4c46f03.chunk.js",
+    "main.js.map": "/spoton/static/js/main.f4c46f03.chunk.js.map",
     "runtime-main.js": "/spoton/static/js/runtime-main.aec3852c.js",
     "runtime-main.js.map": "/spoton/static/js/runtime-main.aec3852c.js.map",
     "static/js/2.69dee5b3.chunk.js": "/spoton/static/js/2.69dee5b3.chunk.js",
     "static/js/2.69dee5b3.chunk.js.map": "/spoton/static/js/2.69dee5b3.chunk.js.map",
     "index.html": "/spoton/index.html",
-    "precache-manifest.f2a5b2412ecb6fa6c780ec832a3670ef.js": "/spoton/precache-manifest.f2a5b2412ecb6fa6c780ec832a3670ef.js",
+    "precache-manifest.30669fe5a250fc4e7712bbac85d55976.js": "/spoton/precache-manifest.30669fe5a250fc4e7712bbac85d55976.js",
     "service-worker.js": "/spoton/service-worker.js",
-    "static/css/main.511eead0.chunk.css.map": "/spoton/static/css/main.511eead0.chunk.css.map",
-    "static/js/2.69dee5b3.chunk.js.LICENSE.txt": "/spoton/static/js/2.69dee5b3.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/spoton/static/media/logo.5d5d9eef.svg"
+    "static/css/main.8c9ee276.chunk.css.map": "/spoton/static/css/main.8c9ee276.chunk.css.map",
+    "static/js/2.69dee5b3.chunk.js.LICENSE.txt": "/spoton/static/js/2.69dee5b3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.aec3852c.js",
     "static/js/2.69dee5b3.chunk.js",
-    "static/css/main.511eead0.chunk.css",
-    "static/js/main.d844b511.chunk.js"
+    "static/css/main.8c9ee276.chunk.css",
+    "static/js/main.f4c46f03.chunk.js"
   ]
 }

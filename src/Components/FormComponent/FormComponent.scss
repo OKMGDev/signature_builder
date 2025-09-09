@@ -1,7 +1,30 @@
+.wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 20px 20px !important;
+	max-width: 70%;
+
+	.welcome-text {
+		p {
+			color: #000;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
+			text-align: left;
+			margin-bottom: 0.5em;
+
+		}
+	}
+}
+
 .signature-wrapper {
 	background: #fff;
 	cursor: pointer;
-
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .instructions {
@@ -193,7 +216,11 @@ form {
 		border: none;
 		padding: 0;
 		margin: 0;
-		margin-top: 10px;
+		margin-bottom: 10px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 
 		label {
 			display: block;
@@ -312,19 +339,27 @@ form {
 
 .signature-section-wrapper {
 	display: flex;
-	align-items: flex-start;
-	justify-content: center;
+	justify-content: space-between;
 	gap: 50px;
+	width: 100%;
+	margin-top: 32px;
+	min-height: 100vh;
 
 	.form-container {
 		width: 100%;
+	}
+
+	.signature-wrapper {
+		align-self: stretch;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.signature-preview-footer {
 		display: flex;
 		align-items: center;
 		gap: 10px;
-		margin-top: 32px;
+		margin-top: auto;
 
 		.button {
 			background: #265aa8;
@@ -341,6 +376,27 @@ form {
 				color: #fff;
 			}
 		}
+	}
+}
+
+// Base Signature Table Styles
+.signature-table {
+	width: 520px;
+	border-collapse: collapse;
+
+	td {
+		padding: 2px 0;
+		vertical-align: top;
+	}
+
+	// Company logo styling
+	td img[src*="logo"] {
+		display: block;
+		max-width: 150px;
+		max-height: 85px;
+		width: auto;
+		height: auto;
+		object-fit: contain;
 	}
 }
 
@@ -504,7 +560,6 @@ form {
 @media (max-width: 1200px) {
 	.signature-section-wrapper {
 		gap: 30px;
-		padding: 0 20px;
 	}
 }
 
@@ -546,8 +601,8 @@ form {
 
 			input,
 			select {
-				height: 40px;
-				padding: 8px;
+				height: 32px;
+				padding: 8px 12px;
 				font-size: 14px;
 			}
 
@@ -639,9 +694,12 @@ form {
 			font-size: 11pt !important;
 		}
 
-		img {
-			width: 80px !important;
+		// Company logo styling - more specific to override general img rules
+		td img[src*="logo"] {
+			width: auto !important;
 			height: auto !important;
+			max-width: 150px !important;
+			max-height: 85px !important;
 		}
 
 		// Logo container for multiple logos
@@ -649,8 +707,10 @@ form {
 			gap: 10px !important;
 
 			img {
-				width: 70px !important;
+				width: auto !important;
 				height: auto !important;
+				max-width: 70px !important;
+				max-height: 85px !important;
 			}
 		}
 	}
@@ -771,9 +831,12 @@ form {
 			font-size: 10pt !important;
 		}
 
-		img {
-			width: 60px !important;
+		// Company logo styling for mobile - more specific to override general img rules
+		td img[src*="logo"] {
+			width: auto !important;
 			height: auto !important;
+			max-width: 120px !important;
+			max-height: 70px !important;
 		}
 
 		// Logo container for multiple logos on mobile
@@ -781,8 +844,10 @@ form {
 			gap: 8px !important;
 
 			img {
-				width: 50px !important;
+				width: auto !important;
 				height: auto !important;
+				max-width: 50px !important;
+				max-height: 70px !important;
 			}
 		}
 	}
@@ -805,6 +870,12 @@ form {
 		padding: 10px;
 	}
 
+	.signature-section-wrapper {
+		flex-direction: column;
+		gap: 30px;
+		min-height: auto;
+	}
+
 	form {
 		fieldset {
 
@@ -816,8 +887,13 @@ form {
 		}
 	}
 
+	.signature-wrapper {
+		min-height: auto;
+	}
+
 	.signature-preview-footer {
 		gap: 12px;
+		margin-top: 20px;
 
 		.button {
 			padding: 10px 16px;
@@ -891,5 +967,16 @@ form {
 
 	.modal-tabs {
 		border-bottom: 0.5px solid #eee;
+	}
+}
+
+// Desktop and larger screens
+@media (min-width: 768px) {
+	.signature-section-wrapper {
+		min-height: 200px;
+	}
+
+	.signature-wrapper {
+		min-height: 100%;
 	}
 }

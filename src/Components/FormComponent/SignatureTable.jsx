@@ -3,19 +3,14 @@ import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/c
 
 const SignatureTable = ({ name, job, company, mobile, email }) => {
   const getCompanyLogos = (companyNames) => {
-    if (!Array.isArray(companyNames) || companyNames.length === 0) {
-      return null;
+    if (!companyNames || !Array.isArray(companyNames) || companyNames.length === 0) {
+      return [];
     }
 
-    const logos = companyNames.map(companyName => COMPANY_LOGOS[companyName]).filter(Boolean);
-
-    if (logos.length === 0) return null;
-    if (logos.length === 1) return logos[0];
-
-    return {
-      isMultiple: true,
-      logos: logos
-    };
+    return companyNames
+      .filter(companyName => companyName && companyName.trim() !== '')
+      .map(companyName => COMPANY_LOGOS[companyName])
+      .filter(logo => logo !== undefined);
   };
 
   const companyLogos = getCompanyLogos(company);
@@ -58,39 +53,28 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
           </td>
         </tr>
 
-        {companyLogos && (
+        {companyLogos.length > 0 && (
           <tr>
             <td style={{ paddingTop: '10px' }}>
-              {companyLogos.isMultiple ? (
-                <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flexWrap: 'wrap' }}>
-                  {companyLogos.logos.map((logo, index) => (
-                    <img
-                      key={index}
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={logo.width}
-                      height={logo.height}
-                      style={{
-                        width: `${logo.width}px`,
-                        height: `${logo.height}px`,
-                        objectFit: 'contain'
-                      }}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <img
-                  src={companyLogos.src}
-                  alt={companyLogos.alt}
-                  width={companyLogos.width}
-                  height={companyLogos.height}
-                  style={{
-                    width: `${companyLogos.width}px`,
-                    height: `${companyLogos.height}px`,
-                    objectFit: 'contain'
-                  }}
-                />
-              )}
+              {companyLogos.map((logo, index) => (
+                <span key={index}>
+                  <img
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    style={{
+                      width: `${logo.width}px`,
+                      height: `${logo.height}px`,
+                      objectFit: 'contain',
+                      display: 'inline-block',
+                      verticalAlign: 'middle',
+                    }}
+                  />
+                  &nbsp; &nbsp;
+                </span>
+              ))}
             </td>
           </tr>
         )}

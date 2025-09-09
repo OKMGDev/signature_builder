@@ -18,6 +18,7 @@ export default class Form extends Component {
 
     return (
       <form>
+
         <fieldset>
           <label>Name</label>
           <input
@@ -41,33 +42,40 @@ export default class Form extends Component {
         <fieldset>
           <label>Company</label>
           <div className="company-checkboxes">
-            <div className="checkbox-item">
-              <input
-                type="checkbox"
-                id="spot-on-civil"
-                checked={company.includes('Spot on Civil')}
-                onChange={(e) => onCompanyChange('Spot on Civil', e.target.checked)}
-              />
-              <label htmlFor="spot-on-civil">Spot on Civil</label>
-            </div>
-            <div className="checkbox-item">
-              <input
-                type="checkbox"
-                id="spot-on-power-projects"
-                checked={company.includes('Spot on Power Projects')}
-                onChange={(e) => onCompanyChange('Spot on Power Projects', e.target.checked)}
-              />
-              <label htmlFor="spot-on-power-projects">Spot on Power Projects</label>
-            </div>
+
             <div className="checkbox-item">
               <input
                 type="checkbox"
                 id="north-vic-electricity"
-                checked={company.includes('North Vic Electricity Services')}
-                onChange={(e) => onCompanyChange('North Vic Electricity Services', e.target.checked)}
+                name="company"
+                value="North Vic Electricity"
+                checked={company.includes('North Vic Electricity')}
+                onChange={(e) => onCompanyChange(e.target.value, e.target.checked)}
               />
-              <label htmlFor="north-vic-electricity">North Vic Electricity Services</label>
+              <label htmlFor="north-vic-electricity">North Vic Electricity</label>
             </div>
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="spot-on-civil"
+                name="company"
+                value="Spot on Civil"
+                checked={company.includes('Spot on Civil')}
+                onChange={(e) => onCompanyChange(e.target.value, e.target.checked)}
+              />
+              <label htmlFor="spot-on-civil">Spot on Civil</label>
+            </div>
+            {/* <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="spot-on-power"
+                name="company"
+                value="Spot on Power"
+                checked={company.includes('Spot on Power')}
+                onChange={(e) => onCompanyChange(e.target.value, e.target.checked)}
+              />
+              <label htmlFor="spot-on-power">Spot on Power</label>
+            </div> */}
           </div>
         </fieldset>
         <fieldset>

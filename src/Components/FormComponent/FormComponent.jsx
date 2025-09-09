@@ -13,7 +13,7 @@ export default class FormComponent extends React.Component {
 
     // State.
     this.state = {
-      company: [],
+      company: ['North Vic Electricity'], // Set default company as array so logo is always visible
       name: '',
       job: '',
       mobile: '',
@@ -32,19 +32,17 @@ export default class FormComponent extends React.Component {
 
   companyChange = (companyName, isChecked) => {
     this.setState(prevState => {
-      let newCompany = [...prevState.company];
-
       if (isChecked) {
-        // Add company if not already in array
-        if (!newCompany.includes(companyName)) {
-          newCompany.push(companyName);
-        }
+        // Add company if checked
+        return {
+          company: [...prevState.company, companyName]
+        };
       } else {
-        // Remove company from array
-        newCompany = newCompany.filter(company => company !== companyName);
+        // Remove company if unchecked
+        return {
+          company: prevState.company.filter(c => c !== companyName)
+        };
       }
-
-      return { company: newCompany };
     });
   }
 
@@ -83,7 +81,7 @@ export default class FormComponent extends React.Component {
 
     return (
       <div className="wrapper">
-        <h1 style={{ paddingBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <span>
             <img
               src="https://spotongroup.com.au/wp-content/uploads/2025/07/logo-spoton-civil-1.svg"
@@ -95,7 +93,19 @@ export default class FormComponent extends React.Component {
           <span>Signature Generator</span>
         </h1>
 
+        <div className="welcome-text" >
+          <p>
+            Welcome to your custom signature generator, designed and hosted by OKMG.
+          </p>
+          <p>Complete the fields below to prepare your email signature. For the relevant logos to appear, you can select one or both of the businesses. Please note that if you require both logos for a combined signature, it is preferred that North Vic Electricity is ticked first so that the arrangement has the correct business hierarchy.
+          </p>
+          <p>For any support enquiries, please contact web@okmg.com - Thank you!
+          </p>
+        </div>
+
         <div className="signature-section-wrapper">
+
+
           <Form
             name={name}
             job={job}
