@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ae8cd28a8e8ec47be54e9decd9ff06b6",
+    "revision": "18e04aced0c8c7048ed85cc4721c0d37",
     "url": "/hairsupplies/index.html"
   },
   {
-    "revision": "5bc12888b22560cc42be",
+    "revision": "a05b759d56c7ee58c0d0",
     "url": "/hairsupplies/static/css/main.8c9ee276.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hairsupplies/static/js/2.69dee5b3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5bc12888b22560cc42be",
-    "url": "/hairsupplies/static/js/main.193094de.chunk.js"
+    "revision": "a05b759d56c7ee58c0d0",
+    "url": "/hairsupplies/static/js/main.c40d728e.chunk.js"
   },
   {
     "revision": "8183869ffa0bbcd7ab59",

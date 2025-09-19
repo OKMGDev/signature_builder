@@ -8,11 +8,13 @@ export default class Form extends Component {
       job,
       company,
       mobile,
+      landline,
       email,
       onNameChange,
       onJobChange,
       onCompanyChange,
       onMobileChange,
+      onLandlineChange,
       onEmailChange
     } = this.props;
 
@@ -60,6 +62,16 @@ export default class Form extends Component {
             value={mobile}
             onChange={onMobileChange}
             placeholder="Enter your mobile number"
+          />
+        </fieldset>
+        <fieldset>
+          <label>Landline</label>
+          <input
+            type="text"
+            id="landline"
+            value={landline}
+            onChange={onLandlineChange}
+            placeholder="Enter your landline number"
           />
         </fieldset>
         <fieldset>

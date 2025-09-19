@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/hairsupplies/static/css/main.8c9ee276.chunk.css",
-    "main.js": "/hairsupplies/static/js/main.193094de.chunk.js",
-    "main.js.map": "/hairsupplies/static/js/main.193094de.chunk.js.map",
+    "main.js": "/hairsupplies/static/js/main.c40d728e.chunk.js",
+    "main.js.map": "/hairsupplies/static/js/main.c40d728e.chunk.js.map",
     "runtime-main.js": "/hairsupplies/static/js/runtime-main.b4c521b6.js",
     "runtime-main.js.map": "/hairsupplies/static/js/runtime-main.b4c521b6.js.map",
     "static/js/2.69dee5b3.chunk.js": "/hairsupplies/static/js/2.69dee5b3.chunk.js",
     "static/js/2.69dee5b3.chunk.js.map": "/hairsupplies/static/js/2.69dee5b3.chunk.js.map",
     "index.html": "/hairsupplies/index.html",
-    "precache-manifest.fd3fbce21c48c2b7cba3c8c7ba2de738.js": "/hairsupplies/precache-manifest.fd3fbce21c48c2b7cba3c8c7ba2de738.js",
+    "precache-manifest.9d5681571a12bb1925400f664fd20387.js": "/hairsupplies/precache-manifest.9d5681571a12bb1925400f664fd20387.js",
     "service-worker.js": "/hairsupplies/service-worker.js",
     "static/css/main.8c9ee276.chunk.css.map": "/hairsupplies/static/css/main.8c9ee276.chunk.css.map",
     "static/js/2.69dee5b3.chunk.js.LICENSE.txt": "/hairsupplies/static/js/2.69dee5b3.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b4c521b6.js",
     "static/js/2.69dee5b3.chunk.js",
     "static/css/main.8c9ee276.chunk.css",
-    "static/js/main.193094de.chunk.js"
+    "static/js/main.c40d728e.chunk.js"
   ]
 }

@@ -17,6 +17,7 @@ export default class FormComponent extends React.Component {
       name: '',
       job: '',
       mobile: '',
+      landline: '',
       email: '',
       tooltip: '',
       toolinfo: 'click to copy signature!'
@@ -45,6 +46,13 @@ export default class FormComponent extends React.Component {
     });
   }
 
+  landlineChange = (e) => {
+    let value = e.target.value;
+    this.setState({
+      landline: value
+    });
+  }
+
   emailChange = (e) => {
     let value = e.target.value;
     this.setState({
@@ -67,7 +75,7 @@ export default class FormComponent extends React.Component {
   }
 
   render() {
-    const { name, job, company, mobile, email, tooltip, toolinfo } = this.state;
+    const { name, job, company, mobile, landline, email, tooltip, toolinfo } = this.state;
 
     return (
       <div className="wrapper">
@@ -101,11 +109,13 @@ export default class FormComponent extends React.Component {
             job={job}
             company={company}
             mobile={mobile}
+            landline={landline}
             email={email}
             onNameChange={this.nameChange}
             onJobChange={this.jobChange}
             onCompanyChange={this.companyChange}
             onMobileChange={this.mobileChange}
+            onLandlineChange={this.landlineChange}
             onEmailChange={this.emailChange}
           />
 
@@ -114,6 +124,7 @@ export default class FormComponent extends React.Component {
             job={job}
             company={company}
             mobile={mobile}
+            landline={landline}
             email={email}
             tooltip={tooltip}
             toolinfo={toolinfo}

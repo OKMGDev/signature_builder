@@ -1,7 +1,7 @@
 import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
 
-const SignatureTable = ({ name, job, company, mobile, email }) => {
+const SignatureTable = ({ name, job, company, mobile, landline, email }) => {
   const getCompanyLogo = (companyName) => {
     if (!companyName || companyName.trim() === '') {
       return null;
@@ -46,11 +46,20 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
             <br /><br />
           </td>
         </tr>
-        <tr>
-          <td style={SIGNATURE_STYLES.contact}>
-            {mobile || "0000 00 0000"}
-          </td>
-        </tr>
+        {mobile && mobile.trim() !== '' && (
+          <tr>
+            <td style={SIGNATURE_STYLES.contact}>
+              {mobile}
+            </td>
+          </tr>
+        )}
+        {landline && landline.trim() !== '' && (
+          <tr>
+            <td style={SIGNATURE_STYLES.contact}>
+              {landline}
+            </td>
+          </tr>
+        )}
         <tr>
           <td style={SIGNATURE_STYLES.contact}>
             {email || "example@example.com.au"}
