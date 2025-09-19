@@ -1,14 +1,14 @@
 export const COMPANY_LOGOS = {
   'Hair Supplies': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hs-larger.png?v=1757399448',
+    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hs-email.png?v=1758250324',
     alt: 'Hair Supplies',
     width: 250,
     height: 60
   },
   'Hair Online': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hair-online.png?v=1757399091',
+    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/ho-email.png?v=1758250324',
     alt: 'Hair Online',
-    width: 140,
+    width: 250,
     height: 60
   }
 };
