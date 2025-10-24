@@ -1,26 +1,18 @@
+import helmRoadLogo from '../../../assets/logo.png';
+
 export const COMPANY_LOGOS = {
-  'Hair Supplies': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hs-email.png?v=1758250324',
-    alt: 'Hair Supplies',
-    width: 250,
-    height: 60
-  },
-  'Hair Online': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/ho-email.png?v=1758250324',
-    alt: 'Hair Online',
-    width: 250,
-    height: 60
+  'Helm Road': {
+    src: helmRoadLogo,
+    alt: 'Helm Road',
+    width: 200,
+    height: 48
   }
 };
 
 export const COMPANY_WEBSITES = {
-  'Hair Supplies': {
-    url: 'https://hairsupplies.com.au/',
-    label: 'www.hairsupplies.com.au'
-  },
-  'Hair Online': {
-    url: 'https://haironline.com.au',
-    label: 'www.haironline.com.au'
+  'Helm Road': {
+    url: 'https://helmroad.com.au/',
+    label: 'www.helmroad.com.au'
   }
 };
 
@@ -29,18 +21,19 @@ export const SIGNATURE_STYLES = {
     fontSize: '12pt',
     textTransform: 'capitalize',
     fontWeight: 'bold',
-    color: '#000000'
+    color: '#1B4D2B'
   },
   job: {
     fontSize: '9pt',
     textTransform: 'capitalize',
-    color: '#B2CB23'
+    color: '#433722'
   },
   contact: {
     fontSize: '9pt'
   },
   disclaimer: {
     fontSize: '8pt',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    color: '#707070'
   }
 };

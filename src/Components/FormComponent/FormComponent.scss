@@ -362,14 +362,15 @@ form {
 		margin-top: auto;
 
 		.button {
-			background: #265aa8;
+			background: #1B4D2B;
 			color: #fff;
 			padding: 10px 20px;
-			border-radius: 0px;
+			border-radius: 4px;
 			text-decoration: none;
 			font-size: 14px;
 			font-weight: bold;
 			cursor: pointer;
+			border-width: 0px;
 
 			&:hover {
 				background: black;
@@ -392,8 +393,6 @@ form {
 	// Company logo styling
 	td img[src*="logo"] {
 		display: block;
-		max-width: 150px;
-		max-height: 85px;
 		width: auto;
 		height: auto;
 		object-fit: contain;

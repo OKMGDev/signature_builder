@@ -6,15 +6,11 @@ export default class Form extends Component {
     const {
       name,
       job,
-      company,
       mobile,
-      landline,
       email,
       onNameChange,
       onJobChange,
-      onCompanyChange,
       onMobileChange,
-      onLandlineChange,
       onEmailChange
     } = this.props;
 
@@ -42,19 +38,6 @@ export default class Form extends Component {
           />
         </fieldset>
         <fieldset>
-          <label>Company</label>
-          <select
-            id="company"
-            name="company"
-            value={company}
-            onChange={(e) => onCompanyChange(e.target.value)}
-          >
-            <option value="">Select a company</option>
-            <option value="Hair Supplies">Hair Supplies</option>
-            <option value="Hair Online">Hair Online</option>
-          </select>
-        </fieldset>
-        <fieldset>
           <label>Mobile</label>
           <input
             type="text"
@@ -62,16 +45,6 @@ export default class Form extends Component {
             value={mobile}
             onChange={onMobileChange}
             placeholder="Enter your mobile number"
-          />
-        </fieldset>
-        <fieldset>
-          <label>Landline</label>
-          <input
-            type="text"
-            id="landline"
-            value={landline}
-            onChange={onLandlineChange}
-            placeholder="Enter your landline number"
           />
         </fieldset>
         <fieldset>
