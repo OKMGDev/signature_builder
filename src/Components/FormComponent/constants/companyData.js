@@ -1,19 +1,19 @@
-import helmRoadLogo from '../../../assets/logo.png';
 
 export const COMPANY_LOGOS = {
-  'Helm Road': {
-    src: helmRoadLogo,
-    alt: 'Helm Road',
-    width: 200,
-    height: 48
+  'Beyond Traffic Management': {
+    src: 'https://www.beyondtraffic.com.au/wp-content/uploads/2025/04/Beyond_1-768x112.png',
+    alt: 'Beyond Traffic Management',
+    width: 250,
+    height: 36
   }
 };
 
 export const COMPANY_WEBSITES = {
-  'Helm Road': {
-    url: 'https://helmroad.com.au/',
-    label: 'www.helmroad.com.au'
+  'Beyond Traffic Management': {
+    url: 'https://www.beyondtraffic.com.au<br />https://www.beyondtrafficmanagement.com.au',
+    label: 'www.beyondtraffic.com.au <br />www.beyondtrafficmanagement.com.au'
   }
+
 };
 
 export const SIGNATURE_STYLES = {
@@ -21,12 +21,12 @@ export const SIGNATURE_STYLES = {
     fontSize: '12pt',
     textTransform: 'capitalize',
     fontWeight: 'bold',
-    color: '#1B4D2B'
+    color: '#028536'
   },
   job: {
     fontSize: '9pt',
     textTransform: 'capitalize',
-    color: '#433722'
+    color: '#8a8a8a'
   },
   contact: {
     fontSize: '9pt'

@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import './FormComponent.scss';
 import Form from './Form';
 import SignaturePreview from './SignaturePreview';
-import helmRoadLogo from '../../assets/logo.png';
+import beyondTrafficLogo from '../../assets/logo.png';
 
 export default class FormComponent extends React.Component {
   constructor(props) {
@@ -67,10 +67,10 @@ export default class FormComponent extends React.Component {
         <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <span>
             <img
-              src={helmRoadLogo}
+              src={beyondTrafficLogo}
               width={200}
               style={{ "marginBottom": "5px" }}
-              alt="Helm Road Logo"
+              alt="Beyond Traffic Management Logo"
             />
           </span>
           <span>Signature Generator</span>
@@ -80,7 +80,7 @@ export default class FormComponent extends React.Component {
           <p>
             Welcome to your custom signature generator, designed and hosted by OKMG.
           </p>
-          <p>Complete the fields below to prepare your email signature. The Helm Road logo will be automatically included in your signature.
+          <p>Complete the fields below to prepare your email signature. The Penguin Electrical logo will be automatically included in your signature.
           </p>
           <p>For any support enquiries, please contact web@okmg.com - Thank you!
           </p>

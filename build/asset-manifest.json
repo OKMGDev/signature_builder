@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/helmroad/static/css/main.f68211fb.chunk.css",
-    "main.js": "/helmroad/static/js/main.c95dfa54.chunk.js",
-    "main.js.map": "/helmroad/static/js/main.c95dfa54.chunk.js.map",
-    "runtime-main.js": "/helmroad/static/js/runtime-main.fd6bf487.js",
-    "runtime-main.js.map": "/helmroad/static/js/runtime-main.fd6bf487.js.map",
-    "static/js/2.c7658562.chunk.js": "/helmroad/static/js/2.c7658562.chunk.js",
-    "static/js/2.c7658562.chunk.js.map": "/helmroad/static/js/2.c7658562.chunk.js.map",
-    "index.html": "/helmroad/index.html",
-    "precache-manifest.b5486b4baecbb2023d48d41f89b3832b.js": "/helmroad/precache-manifest.b5486b4baecbb2023d48d41f89b3832b.js",
-    "service-worker.js": "/helmroad/service-worker.js",
-    "static/css/main.f68211fb.chunk.css.map": "/helmroad/static/css/main.f68211fb.chunk.css.map",
-    "static/js/2.c7658562.chunk.js.LICENSE.txt": "/helmroad/static/js/2.c7658562.chunk.js.LICENSE.txt",
-    "static/media/logo.png": "/helmroad/static/media/logo.9fcc6482.png"
+    "main.css": "/beyondtraffic/static/css/main.8c5db4d0.chunk.css",
+    "main.js": "/beyondtraffic/static/js/main.eb8b2752.chunk.js",
+    "main.js.map": "/beyondtraffic/static/js/main.eb8b2752.chunk.js.map",
+    "runtime-main.js": "/beyondtraffic/static/js/runtime-main.f0a09615.js",
+    "runtime-main.js.map": "/beyondtraffic/static/js/runtime-main.f0a09615.js.map",
+    "static/js/2.bf19a925.chunk.js": "/beyondtraffic/static/js/2.bf19a925.chunk.js",
+    "static/js/2.bf19a925.chunk.js.map": "/beyondtraffic/static/js/2.bf19a925.chunk.js.map",
+    "index.html": "/beyondtraffic/index.html",
+    "precache-manifest.66a8f3a1f59510e26b256b2e8700a16e.js": "/beyondtraffic/precache-manifest.66a8f3a1f59510e26b256b2e8700a16e.js",
+    "service-worker.js": "/beyondtraffic/service-worker.js",
+    "static/css/main.8c5db4d0.chunk.css.map": "/beyondtraffic/static/css/main.8c5db4d0.chunk.css.map",
+    "static/js/2.bf19a925.chunk.js.LICENSE.txt": "/beyondtraffic/static/js/2.bf19a925.chunk.js.LICENSE.txt",
+    "static/media/logo.png": "/beyondtraffic/static/media/logo.f1159316.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.fd6bf487.js",
-    "static/js/2.c7658562.chunk.js",
-    "static/css/main.f68211fb.chunk.css",
-    "static/js/main.c95dfa54.chunk.js"
+    "static/js/runtime-main.f0a09615.js",
+    "static/js/2.bf19a925.chunk.js",
+    "static/css/main.8c5db4d0.chunk.css",
+    "static/js/main.eb8b2752.chunk.js"
   ]
 }
