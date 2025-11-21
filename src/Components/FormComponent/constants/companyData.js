@@ -1,38 +1,38 @@
 
 export const COMPANY_LOGOS = {
-  'Beyond Traffic Management': {
+  'OKMG': {
     src: 'https://www.beyondtraffic.com.au/wp-content/uploads/2025/04/Beyond_1-768x112.png',
-    alt: 'Beyond Traffic Management',
+    alt: 'OKMG',
     width: 250,
     height: 36
   }
 };
 
 export const COMPANY_WEBSITES = {
-  'Beyond Traffic Management': {
-    url: 'https://www.beyondtraffic.com.au<br />https://www.beyondtrafficmanagement.com.au',
-    label: 'www.beyondtraffic.com.au <br />www.beyondtrafficmanagement.com.au'
+  'OKMG': {
+    url: 'https://okmg.com',
+    label: 'www.okmg.com'
   }
 
 };
 
 export const SIGNATURE_STYLES = {
   name: {
-    fontSize: '12pt',
+    fontSize: '16px',
     textTransform: 'capitalize',
     fontWeight: 'bold',
-    color: '#028536'
+    color: '#000000'
   },
   job: {
-    fontSize: '9pt',
+    fontSize: '12px',
     textTransform: 'capitalize',
     color: '#8a8a8a'
   },
   contact: {
-    fontSize: '9pt'
+    fontSize: '13px'
   },
   disclaimer: {
-    fontSize: '8pt',
+    fontSize: '12px',
     fontStyle: 'italic',
     color: '#707070'
   }

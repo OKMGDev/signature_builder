@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/beyondtraffic/static/css/main.8c5db4d0.chunk.css",
-    "main.js": "/beyondtraffic/static/js/main.eb8b2752.chunk.js",
-    "main.js.map": "/beyondtraffic/static/js/main.eb8b2752.chunk.js.map",
-    "runtime-main.js": "/beyondtraffic/static/js/runtime-main.f0a09615.js",
-    "runtime-main.js.map": "/beyondtraffic/static/js/runtime-main.f0a09615.js.map",
-    "static/js/2.bf19a925.chunk.js": "/beyondtraffic/static/js/2.bf19a925.chunk.js",
-    "static/js/2.bf19a925.chunk.js.map": "/beyondtraffic/static/js/2.bf19a925.chunk.js.map",
-    "index.html": "/beyondtraffic/index.html",
-    "precache-manifest.66a8f3a1f59510e26b256b2e8700a16e.js": "/beyondtraffic/precache-manifest.66a8f3a1f59510e26b256b2e8700a16e.js",
-    "service-worker.js": "/beyondtraffic/service-worker.js",
-    "static/css/main.8c5db4d0.chunk.css.map": "/beyondtraffic/static/css/main.8c5db4d0.chunk.css.map",
-    "static/js/2.bf19a925.chunk.js.LICENSE.txt": "/beyondtraffic/static/js/2.bf19a925.chunk.js.LICENSE.txt",
-    "static/media/logo.png": "/beyondtraffic/static/media/logo.f1159316.png"
+    "main.css": "/okmg/static/css/main.ccb50750.chunk.css",
+    "main.js": "/okmg/static/js/main.3d3f4ad7.chunk.js",
+    "main.js.map": "/okmg/static/js/main.3d3f4ad7.chunk.js.map",
+    "runtime-main.js": "/okmg/static/js/runtime-main.3d196784.js",
+    "runtime-main.js.map": "/okmg/static/js/runtime-main.3d196784.js.map",
+    "static/js/2.65460303.chunk.js": "/okmg/static/js/2.65460303.chunk.js",
+    "static/js/2.65460303.chunk.js.map": "/okmg/static/js/2.65460303.chunk.js.map",
+    "index.html": "/okmg/index.html",
+    "precache-manifest.4e963732636d50fbf6a586fc965b76cd.js": "/okmg/precache-manifest.4e963732636d50fbf6a586fc965b76cd.js",
+    "service-worker.js": "/okmg/service-worker.js",
+    "static/css/main.ccb50750.chunk.css.map": "/okmg/static/css/main.ccb50750.chunk.css.map",
+    "static/js/2.65460303.chunk.js.LICENSE.txt": "/okmg/static/js/2.65460303.chunk.js.LICENSE.txt",
+    "static/media/logo-bigger.png": "/okmg/static/media/logo-bigger.d9b42486.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f0a09615.js",
-    "static/js/2.bf19a925.chunk.js",
-    "static/css/main.8c5db4d0.chunk.css",
-    "static/js/main.eb8b2752.chunk.js"
+    "static/js/runtime-main.3d196784.js",
+    "static/js/2.65460303.chunk.js",
+    "static/css/main.ccb50750.chunk.css",
+    "static/js/main.3d3f4ad7.chunk.js"
   ]
 }

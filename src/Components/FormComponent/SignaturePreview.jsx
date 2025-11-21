@@ -41,7 +41,7 @@ export default class SignaturePreview extends Component {
   }
 
   render() {
-    const { name, job, mobile, email, tooltip, toolinfo } = this.props;
+    const { name, job, mobile, email, meetingSchedule, tooltip, toolinfo } = this.props;
     const { showInstallationModal, activeTab } = this.state;
 
     return (
@@ -55,6 +55,7 @@ export default class SignaturePreview extends Component {
             job={job}
             mobile={mobile}
             email={email}
+            meetingSchedule={meetingSchedule}
           />
           {/* -------------- SIGNATURE ---------*/}
         </div>

@@ -18,6 +18,7 @@ export default class FormComponent extends React.Component {
       job: '',
       mobile: '',
       email: '',
+      meetingSchedule: '',
       tooltip: '',
       toolinfo: 'click to copy signature!'
     };
@@ -59,8 +60,15 @@ export default class FormComponent extends React.Component {
     });
   }
 
+  meetingScheduleChange = (e) => {
+    let value = e.target.value;
+    this.setState({
+      meetingSchedule: value
+    });
+  }
+
   render() {
-    const { name, job, mobile, email, tooltip, toolinfo } = this.state;
+    const { name, job, mobile, email, meetingSchedule, tooltip, toolinfo } = this.state;
 
     return (
       <div className="wrapper">
@@ -70,7 +78,7 @@ export default class FormComponent extends React.Component {
               src={beyondTrafficLogo}
               width={200}
               style={{ "marginBottom": "5px" }}
-              alt="Beyond Traffic Management Logo"
+              alt="OKMG"
             />
           </span>
           <span>Signature Generator</span>
@@ -80,7 +88,7 @@ export default class FormComponent extends React.Component {
           <p>
             Welcome to your custom signature generator, designed and hosted by OKMG.
           </p>
-          <p>Complete the fields below to prepare your email signature. The Penguin Electrical logo will be automatically included in your signature.
+          <p>Complete the fields below to prepare your email signature. The OKMG logo will be automatically included in your signature.
           </p>
           <p>For any support enquiries, please contact web@okmg.com - Thank you!
           </p>
@@ -94,10 +102,12 @@ export default class FormComponent extends React.Component {
             job={job}
             mobile={mobile}
             email={email}
+            meetingSchedule={meetingSchedule}
             onNameChange={this.nameChange}
             onJobChange={this.jobChange}
             onMobileChange={this.mobileChange}
             onEmailChange={this.emailChange}
+            onMeetingScheduleChange={this.meetingScheduleChange}
           />
 
           <SignaturePreview
@@ -105,6 +115,7 @@ export default class FormComponent extends React.Component {
             job={job}
             mobile={mobile}
             email={email}
+            meetingSchedule={meetingSchedule}
             tooltip={tooltip}
             toolinfo={toolinfo}
             onTooltipShow={this.toolTipShow}

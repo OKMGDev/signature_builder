@@ -7,11 +7,11 @@ export default class Form extends Component {
       name,
       job,
       mobile,
-      email,
+      meetingSchedule,
       onNameChange,
       onJobChange,
       onMobileChange,
-      onEmailChange
+      onMeetingScheduleChange
     } = this.props;
 
     return (
@@ -48,13 +48,13 @@ export default class Form extends Component {
           />
         </fieldset>
         <fieldset>
-          <label>Email</label>
+          <label>Meeting Schedule Link</label>
           <input
             type="text"
-            id="email"
-            value={email}
-            onChange={onEmailChange}
-            placeholder="Enter your email address"
+            id="meeting-schedule"
+            value={meetingSchedule}
+            onChange={onMeetingScheduleChange}
+            placeholder="Enter meeting schedule link (optional)"
           />
         </fieldset>
       </form>
