@@ -1,6 +1,6 @@
 import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
-import LogoBigger from '../../assets/logo-bigger.png';
+import LogoBigger from '../../assets/logo-bigger.jpg';
 
 const SignatureTable = ({ name, job, mobile, email, meetingSchedule }) => {
   const companyLogo = COMPANY_LOGOS['OKMG'];
@@ -73,7 +73,7 @@ const SignatureTable = ({ name, job, mobile, email, meetingSchedule }) => {
                 {mobile && mobile.trim() !== '' && (
                   <tr>
                     <td style={{ ...SIGNATURE_STYLES.contact, padding: '4px 0' }}>
-                      <b style={{ minWidth: '20px' }}>M:</b> <a href={`tel:${mobile}`} style={{ color: '#000', textDecoration: 'none' }}>{mobile}</a>
+                      <b style={{ minWidth: '20px' }}>M:</b> <a href={`tel:${mobile.replace(/\s+/g, '')}`} style={{ color: '#000', textDecoration: 'none' }}>{mobile}</a>
                     </td>
                   </tr>
                 )}
@@ -110,7 +110,7 @@ const SignatureTable = ({ name, job, mobile, email, meetingSchedule }) => {
                         href="https://www.okmg.com/work"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: '#000', textDecoration: 'underline' }}>Work</a>
+                        style={{ color: '#000', textDecoration: 'underline' }}>Our Work</a>
                   </td>
                 </tr>
                 {/* Meeting Schedule Link - only show if not empty */}
