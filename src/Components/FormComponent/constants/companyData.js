@@ -1,18 +1,18 @@
 import helmRoadLogo from '../../../assets/logo.png';
 
 export const COMPANY_LOGOS = {
-  'Helm Road': {
+  'Globe Metals & Mining': {
     src: helmRoadLogo,
-    alt: 'Helm Road',
-    width: 200,
-    height: 48
+    alt: 'Globe Metals & Mining',
+    width: 165,
+    height: 50
   }
 };
 
 export const COMPANY_WEBSITES = {
-  'Helm Road': {
-    url: 'https://helmroad.com.au/',
-    label: 'www.helmroad.com.au'
+  'Globe Metals & Mining': {
+    url: 'https://www.globemm.com/',
+    label: 'www.globemm.com'
   }
 };
 
@@ -21,7 +21,7 @@ export const SIGNATURE_STYLES = {
     fontSize: '12pt',
     textTransform: 'capitalize',
     fontWeight: 'bold',
-    color: '#1B4D2B'
+    color: '#1A8AB2'
   },
   job: {
     fontSize: '9pt',

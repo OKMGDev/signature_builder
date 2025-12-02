@@ -70,7 +70,7 @@ export default class FormComponent extends React.Component {
               src={helmRoadLogo}
               width={200}
               style={{ "marginBottom": "5px" }}
-              alt="Helm Road Logo"
+              alt="Globe Metals & Mining Logo"
             />
           </span>
           <span>Signature Generator</span>
@@ -80,7 +80,7 @@ export default class FormComponent extends React.Component {
           <p>
             Welcome to your custom signature generator, designed and hosted by OKMG.
           </p>
-          <p>Complete the fields below to prepare your email signature. The Helm Road logo will be automatically included in your signature.
+          <p>Complete the fields below to prepare your email signature. The Globe Metals & Mining logo will be automatically included in your signature.
           </p>
           <p>For any support enquiries, please contact web@okmg.com - Thank you!
           </p>
