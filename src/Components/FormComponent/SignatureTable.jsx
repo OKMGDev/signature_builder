@@ -1,5 +1,6 @@
 import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
+import certificates from '../../assets/certificates.jpg';
 
 const SignatureTable = ({ name, job, mobile, email }) => {
   const companyLogo = COMPANY_LOGOS['Beyond Traffic Management'];
@@ -79,7 +80,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
           </td>
         </tr>
         <tr>
-          <td style={{ paddingTop: '20px', padding: '4px 0' }}>
+          <td style={{ padding: '20px 0' }}>
             <img
               src={companyLogo.src}
               alt={companyLogo.alt}
@@ -96,6 +97,20 @@ const SignatureTable = ({ name, job, mobile, email }) => {
           </td>
         </tr>
 
+        <tr>
+          <td style={{ paddingTop: '20px', padding: '4px 0' }}>
+            <img
+              src={certificates}
+              alt="Certificates"
+              style={{
+                width: '100%',
+                maxWidth: '420px',
+                height: 'auto',
+                display: 'block'
+              }}
+            />
+          </td>
+        </tr>
         <tr>
           <td style={{ ...SIGNATURE_STYLES.disclaimer, padding: '4px 0' }}>
             <br />
