@@ -17,8 +17,7 @@ export default class Form extends Component {
       onEmailChange
     } = this.props;
 
-    // Get company names from the constants
-    const companyNames = Object.keys(COMPANIES).filter(name => name !== '--');
+    const companyNames = Object.keys(COMPANIES);
 
     return (
       <form>
@@ -46,27 +45,18 @@ export default class Form extends Component {
           <label>Company</label>
           <div className="company-radio-buttons">
             {companyNames.map((companyName) => (
-              <div key={companyName} className={`radio-item ${company === companyName ? 'selected' : ''}`}>
+              <div key={companyName} className="radio-item">
                 <input
                   type="radio"
                   id={companyName.toLowerCase().replace(/\s+/g, '-')}
                   name="company"
+                  value={companyName}
                   checked={company === companyName}
-                  onChange={() => onCompanyChange(companyName)}
+                  onChange={(e) => onCompanyChange(e.target.value)}
                 />
                 <label htmlFor={companyName.toLowerCase().replace(/\s+/g, '-')}>
                   {companyName}
                 </label>
-                {company === companyName && (
-                  <div className="company-indicator" style={{
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
-                    backgroundColor: COMPANIES[companyName].colors.primary,
-                    marginLeft: 'auto',
-                    marginRight: '8px'
-                  }}></div>
-                )}
               </div>
             ))}
           </div>

@@ -2,10 +2,11 @@
  FORM COMPONENT
 */
 
-import React, { Component } from 'react';
+import React from 'react';
 import './FormComponent.scss';
 import Form from './Form';
 import SignaturePreview from './SignaturePreview';
+import COMPANIES from './constants/companyData';
 
 export default class FormComponent extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class FormComponent extends React.Component {
 
     // State.
     this.state = {
-      company: '',
+      company: 'Aquatic Life Industries',
       name: '',
       job: '',
       mobile: '',
@@ -68,18 +69,20 @@ export default class FormComponent extends React.Component {
 
   render() {
     const { name, job, company, mobile, email, tooltip, toolinfo } = this.state;
+    const defaultCompany = COMPANIES['Aquatic Life Industries'];
 
     return (
       <div className="wrapper">
-        <h1 style={{ paddingBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <span>
             <img
-              src="https://cdn.prod.website-files.com/6822c831157904e56be1ff97/68999525cba5d4586c622cd5_ali.png"
-              width={200}
-              alt="Aquatic Life Industries Logo"
+              src={defaultCompany.logo.src}
+              width={130}
+              style={{ marginBottom: '5px' }}
+              alt={defaultCompany.logo.alt}
             />
           </span>
-          <span>Aquatic Life Industries <br />Signature Generator</span>
+          <span>{defaultCompany.name} - Signature Generator</span>
         </h1>
 
         <div className="signature-section-wrapper">
