@@ -7,6 +7,7 @@ import './FormComponent.scss';
 import Form from './Form';
 import SignaturePreview from './SignaturePreview';
 import COMPANIES from './constants/companyData';
+import { formatAustralianMobile } from './utils/signatureUtils';
 
 export default class FormComponent extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ export default class FormComponent extends React.Component {
 
 
   mobileChange = (e) => {
-    let value = e.target.value;
+    const value = formatAustralianMobile(e.target.value);
     this.setState({
       mobile: value
     });
@@ -69,20 +70,25 @@ export default class FormComponent extends React.Component {
 
   render() {
     const { name, job, company, mobile, email, tooltip, toolinfo } = this.state;
-    const defaultCompany = COMPANIES['Aquatic Life Industries'];
+    const aliCompany = COMPANIES['Aquatic Life Industries'];
+    const staCompany = COMPANIES['Southern Trading Australia'];
 
     return (
       <div className="wrapper">
         <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
             <img
-              src={defaultCompany.logo.src}
-              width={130}
-              style={{ marginBottom: '5px' }}
-              alt={defaultCompany.logo.alt}
+              src={aliCompany.logo.src}
+              style={{ maxHeight: '40px', width: 'auto', display: 'block' }}
+              alt={aliCompany.logo.alt}
+            />
+            <img
+              src={staCompany.logo.src}
+              style={{ maxHeight: '40px', width: 'auto', display: 'block' }}
+              alt={staCompany.logo.alt}
             />
           </span>
-          <span>{defaultCompany.name} - Signature Generator</span>
+          <span>ALI & STA Signature Generator</span>
         </h1>
 
         <div className="signature-section-wrapper">

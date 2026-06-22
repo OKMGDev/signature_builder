@@ -1,5 +1,20 @@
 // Utility functions for signature operations
 
+export const stripPhoneDigits = (phone) => phone.replace(/\D/g, '');
+
+export const formatAustralianMobile = (value) => {
+  const digits = stripPhoneDigits(value).slice(0, 10);
+  if (digits.length <= 4) return digits;
+  if (digits.length <= 7) return `${digits.slice(0, 4)} ${digits.slice(4)}`;
+  return `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`;
+};
+
+export const toTelHref = (phone) => {
+  if (!phone) return null;
+  const digits = stripPhoneDigits(phone);
+  return digits ? `tel:${digits}` : null;
+};
+
 export const copySignatureToClipboard = async () => {
   try {
     const signatureContainer = document.querySelector('.signature-table');

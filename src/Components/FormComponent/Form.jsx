@@ -44,21 +44,34 @@ export default class Form extends Component {
         <fieldset>
           <label>Company</label>
           <div className="company-radio-buttons">
-            {companyNames.map((companyName) => (
-              <div key={companyName} className="radio-item">
-                <input
-                  type="radio"
-                  id={companyName.toLowerCase().replace(/\s+/g, '-')}
-                  name="company"
-                  value={companyName}
-                  checked={company === companyName}
-                  onChange={(e) => onCompanyChange(e.target.value)}
-                />
-                <label htmlFor={companyName.toLowerCase().replace(/\s+/g, '-')}>
-                  {companyName}
-                </label>
-              </div>
-            ))}
+            {companyNames.map((companyName) => {
+              const accent = COMPANIES[companyName].accent;
+              const isSelected = company === companyName;
+
+              return (
+                <div
+                  key={companyName}
+                  className={`radio-item ${isSelected ? 'selected' : ''}`}
+                  style={isSelected ? { borderColor: accent, background: `${accent}1a` } : undefined}
+                >
+                  <input
+                    type="radio"
+                    id={companyName.toLowerCase().replace(/\s+/g, '-')}
+                    name="company"
+                    value={companyName}
+                    checked={isSelected}
+                    onChange={(e) => onCompanyChange(e.target.value)}
+                    style={isSelected ? { accentColor: accent } : undefined}
+                  />
+                  <label
+                    htmlFor={companyName.toLowerCase().replace(/\s+/g, '-')}
+                    style={isSelected ? { color: accent } : undefined}
+                  >
+                    {companyName}
+                  </label>
+                </div>
+              );
+            })}
           </div>
         </fieldset>
         <fieldset>

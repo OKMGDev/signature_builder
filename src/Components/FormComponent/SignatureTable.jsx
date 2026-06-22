@@ -1,14 +1,37 @@
 import React from 'react';
 import COMPANIES, { SIGNATURE_STYLES } from './constants/companyData';
+import { formatAustralianMobile, toTelHref } from './utils/signatureUtils';
 
 const DISCLAIMER_TEXT =
-  'This email may contain confidential or privileged information or intellectual property, including material belonging to third parties. Any disclosure, copying, distribution or reliance upon the contents of this email is prohibited unless agreed in writing and signed by an authorised Director. If you have received the email in error, please inform the sender and delete it. ';
+  'Disclaimer: The information contained in this email and any attached files may be confidential information. If you are not the intended recipient, any use, disclosure or copying of this email is unauthorised. If you have received this email in error, please notify the sender by reply email and delete the original. Thank you.';
 
-const ACKNOWLEDGEMENT_TEXT =
-  'ALI acknowledges the Traditional Custodians of the land and sea upon which we operate and pays our respects to Elders past and present.';
+const LINK_STYLE = { color: '#000', textDecoration: 'none' };
+
+const toMapsHref = (addressHtml) => {
+  const plain = addressHtml.replace(/<br\s*\/?>/gi, ', ').replace(/<[^>]+>/g, '').trim();
+  return plain ? `https://maps.google.com/?q=${encodeURIComponent(plain)}` : null;
+};
+
+const ContactLink = ({ href, children }) => {
+  if (!href) return children;
+  const opensInNewTab = href.startsWith('http');
+  return (
+    <a
+      href={href}
+      style={LINK_STYLE}
+      {...(opensInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      {children}
+    </a>
+  );
+};
 
 const SignatureTable = ({ name, job, company, mobile, email }) => {
   const companyData = company && COMPANIES[company] ? COMPANIES[company] : COMPANIES['Aquatic Life Industries'];
+  const mobileDisplay = mobile ? formatAustralianMobile(mobile) : '000 000 0000';
+  const mobileHref = mobile ? toTelHref(mobile) : null;
+  const companyPhoneHref = toTelHref(companyData.phone);
+  const mapsHref = toMapsHref(companyData.address);
 
   return (
     <table
@@ -27,36 +50,40 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
     >
       <tbody>
         <tr>
-          <td style={SIGNATURE_STYLES.name}>{name || 'Name'}</td>
+          <td style={{ ...SIGNATURE_STYLES.name, color: companyData.accent, paddingBottom: '4px' }}>{name || 'Name'}</td>
         </tr>
         <tr>
-          <td style={SIGNATURE_STYLES.job}>
-            {job || 'Job Title'}
-            <br />
-            <br />
+          <td style={{ ...SIGNATURE_STYLES.job, paddingBottom: '12px' }}>{job || 'Job Title'}</td>
+        </tr>
+        <tr>
+          <td style={{ ...SIGNATURE_STYLES.contact, paddingBottom: '6px' }}>
+            <ContactLink href={mobileHref}>{mobileDisplay}</ContactLink>
+          </td>
+        </tr>
+        {companyData.phone && (
+          <tr>
+            <td style={{ ...SIGNATURE_STYLES.contact, paddingBottom: '6px' }}>
+              <ContactLink href={companyPhoneHref}>{companyData.phone}</ContactLink>
+            </td>
+          </tr>
+        )}
+        <tr>
+          <td style={{ ...SIGNATURE_STYLES.contact, paddingBottom: '6px' }}>{email || 'example@example.com.au'}</td>
+        </tr>
+        <tr>
+          <td style={{ ...SIGNATURE_STYLES.contact, paddingBottom: '6px' }}>
+            <ContactLink href={mapsHref}>
+              <span dangerouslySetInnerHTML={{ __html: companyData.address }} />
+            </ContactLink>
           </td>
         </tr>
         <tr>
-          <td style={SIGNATURE_STYLES.contact}>{mobile || '000 000 0000'}</td>
-        </tr>
-        <tr>
-          <td style={SIGNATURE_STYLES.contact}>{companyData.phone}</td>
-        </tr>
-        <tr>
-          <td style={SIGNATURE_STYLES.contact}>{email || 'example@example.com.au'}</td>
-        </tr>
-        <tr>
-          <td style={SIGNATURE_STYLES.contact}>
-            <span dangerouslySetInnerHTML={{ __html: companyData.address }} />
-          </td>
-        </tr>
-        <tr>
-          <td style={SIGNATURE_STYLES.contact}>
+          <td style={{ ...SIGNATURE_STYLES.contact, paddingBottom: '12px' }}>
             <a
               href={companyData.websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#000', textDecoration: 'none' }}
+              style={LINK_STYLE}
             >
               {companyData.website}
             </a>
@@ -64,7 +91,7 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
         </tr>
         {companyData.logo && (
           <tr>
-            <td style={{ paddingTop: '10px' }}>
+            <td style={{ paddingBottom: '12px' }}>
               <img
                 src={companyData.logo.src}
                 alt={companyData.logo.alt}
@@ -82,11 +109,8 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
           </tr>
         )}
         <tr>
-          <td style={SIGNATURE_STYLES.disclaimer}>
-            <br />
-            <p>{DISCLAIMER_TEXT}</p>
-            <p>{ACKNOWLEDGEMENT_TEXT}</p>
-            {'          '}
+          <td style={{ ...SIGNATURE_STYLES.disclaimer }}>
+            <p style={{ margin: 0 }}>{DISCLAIMER_TEXT}</p>
           </td>
         </tr>
       </tbody>
