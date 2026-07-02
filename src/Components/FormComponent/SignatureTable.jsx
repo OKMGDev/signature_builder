@@ -1,14 +1,20 @@
 import React from 'react';
-import COMPANIES, { BRAND_LOGOS, SIGNATURE_FONT_SIZE, SIGNATURE_STYLES } from './constants/companyData';
+import COMPANIES, {
+  BRAND_LOGOS,
+  DETAIL_GRAY,
+  SIGNATURE_STYLES
+} from './constants/companyData';
 import { formatAustralianMobile, toTelHref } from './utils/signatureUtils';
 
 const DISCLAIMER_TEXT =
   'Disclaimer: The information contained in this email and any attached files may be confidential information. If you are not the intended recipient, any use, disclosure or copying of this email is unauthorised. If you have received this email in error, please notify the sender by reply email and delete the original. Thank you.';
 
-const BLACK_LINK = { color: '#000', textDecoration: 'none' };
+const MOBILE_LINK = { color: '#111111', textDecoration: 'underline' };
+const EMAIL_LINK = { color: '#111111', textDecoration: 'underline' };
+const DETAIL_LINK = { color: DETAIL_GRAY, textDecoration: 'none' };
 
-const toMapsHref = (addressHtml) => {
-  const plain = addressHtml.replace(/<br\s*\/?>/gi, ', ').replace(/<[^>]+>/g, '').trim();
+const toMapsHref = (address) => {
+  const plain = address.replace(/<br\s*\/?>/gi, ', ').replace(/<[^>]+>/g, '').trim();
   return plain ? `https://maps.google.com/?q=${encodeURIComponent(plain)}` : null;
 };
 
@@ -28,13 +34,8 @@ const ContactLink = ({ href, style, children }) => {
 
 const ContactRow = ({ label, children }) => (
   <tr>
-    <td
-      valign="top"
-      style={{ ...SIGNATURE_STYLES.contactLabel, width: '24px', paddingBottom: '5px' }}
-    >
-      {label}
-    </td>
-    <td style={{ ...SIGNATURE_STYLES.contact, paddingBottom: '5px' }}>{children}</td>
+    <td valign="top" style={{ ...SIGNATURE_STYLES.contactLabel, width: '17px', paddingBottom: '4px' }}>{label}</td>
+    <td style={{ ...SIGNATURE_STYLES.contact, whiteSpace: 'nowrap', paddingBottom: '4px' }}>{children}</td>
   </tr>
 );
 
@@ -44,55 +45,51 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
   const mobileHref = mobile ? toTelHref(mobile) : null;
   const companyPhoneHref = toTelHref(companyData.phone);
   const mapsHref = toMapsHref(companyData.address);
+  const websiteDisplay = companyData.website.replace(/^www\./i, '');
 
-  const partnerRowLogos = [companyData.partnerLogo, ...BRAND_LOGOS];
+  const brandStripLogos = [companyData.partnerLogo, ...BRAND_LOGOS];
 
   return (
     <table
       className="signature-table"
-      width={520}
+      width={454}
       cellSpacing="0"
       cellPadding="0"
       style={{
         fontFamily: 'Arial,Helvetica,sans-serif',
         textAlign: 'left',
-        color: 'rgb(0, 0, 0)',
-        fontSize: SIGNATURE_FONT_SIZE,
-        lineHeight: '16px',
-        width: '520px'
+        color: '#111111',
+        fontSize: '12px',
+        lineHeight: '18px',
+        width: '454px'
       }}
     >
       <tbody>
+        {/* Name + job title */}
         <tr>
-          <td style={{ ...SIGNATURE_STYLES.name, color: companyData.accent, paddingBottom: '2px' }}>{name || 'Name'}</td>
+          <td style={{ ...SIGNATURE_STYLES.name, paddingBottom: '0' }}>{name || 'Name'}</td>
         </tr>
         <tr>
-          <td style={{ ...SIGNATURE_STYLES.job, paddingBottom: '28px' }}>{job || 'Job Title'}</td>
+          <td style={{ ...SIGNATURE_STYLES.job, paddingBottom: '18px' }}>{job || 'Job Title'}</td>
         </tr>
 
         {/* Contact details */}
         <tr>
-          <td style={{ paddingBottom: '28px' }}>
+          <td style={{ paddingBottom: '16px' }}>
             <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
               <tbody>
                 <ContactRow label="M">
-                  <ContactLink href={mobileHref} style={BLACK_LINK}>{mobileDisplay}</ContactLink>
+                  <ContactLink href={mobileHref} style={MOBILE_LINK}>{mobileDisplay}</ContactLink>
                 </ContactRow>
                 {companyData.phone && (
                   <ContactRow label="T">
-                    <ContactLink href={companyPhoneHref} style={BLACK_LINK}>{companyData.phone}</ContactLink>
+                    <ContactLink href={companyPhoneHref} style={MOBILE_LINK}>{companyData.phone}</ContactLink>
                   </ContactRow>
                 )}
                 <ContactRow label="E">
-                  <span style={BLACK_LINK}>{email || 'example@example.com.au'}</span>
-                </ContactRow>
-                <ContactRow label="A">
-                  <ContactLink href={mapsHref} style={BLACK_LINK}>
-                    <span dangerouslySetInnerHTML={{ __html: companyData.address }} />
+                  <ContactLink href={`mailto:${email || 'example@aquaticlife.com.au'}`} style={EMAIL_LINK}>
+                    {email || 'example@aquaticlife.com.au'}
                   </ContactLink>
-                </ContactRow>
-                <ContactRow label="W">
-                  <ContactLink href={companyData.websiteUrl} style={BLACK_LINK}>{companyData.website}</ContactLink>
                 </ContactRow>
               </tbody>
             </table>
@@ -101,7 +98,7 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
 
         {/* Primary (selected company) logo */}
         <tr>
-          <td style={{ paddingBottom: '32px' }}>
+          <td style={{ paddingBottom: '16px' }}>
             <img
               src={companyData.logo.src}
               alt={companyData.logo.alt}
@@ -117,17 +114,26 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
           </td>
         </tr>
 
-        {/* Partner company + brand logos */}
+        {/* Website + address detail line */}
         <tr>
-          <td style={{ borderTop: '1px solid #e2e2e2', borderBottom: '1px solid #e2e2e2', paddingTop: '28px', paddingBottom: '28px' }}>
+          <td style={{ ...SIGNATURE_STYLES.detail, paddingBottom: '16px' }}>
+            <ContactLink href={companyData.websiteUrl} style={DETAIL_LINK}>{websiteDisplay}</ContactLink>
+            {' | '}
+            <ContactLink href={mapsHref} style={DETAIL_LINK}>{companyData.address}</ContactLink>
+          </td>
+        </tr>
+
+        {/* Partner company + brand logos strip */}
+        <tr>
+          <td style={{ paddingBottom: '16px' }}>
             <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
               <tbody>
                 <tr>
-                  {partnerRowLogos.map((logo, index) => (
+                  {brandStripLogos.map((logo, index) => (
                     <td
                       key={logo.src}
                       valign="middle"
-                      style={{ paddingRight: index === partnerRowLogos.length - 1 ? 0 : '26px' }}
+                      style={{ paddingRight: index === brandStripLogos.length - 1 ? 0 : '16px' }}
                     >
                       <img
                         src={logo.src}
@@ -149,8 +155,9 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
           </td>
         </tr>
 
+        {/* Disclaimer */}
         <tr>
-          <td style={{ ...SIGNATURE_STYLES.disclaimer, paddingTop: '18px' }}>
+          <td style={{ ...SIGNATURE_STYLES.disclaimer }}>
             <p style={{ margin: 0 }}>{DISCLAIMER_TEXT}</p>
           </td>
         </tr>
