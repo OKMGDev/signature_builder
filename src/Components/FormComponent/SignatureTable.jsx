@@ -12,6 +12,13 @@ const DISCLAIMER_TEXT =
 const MOBILE_LINK = { color: '#111111', textDecoration: 'underline' };
 const EMAIL_LINK = { color: '#111111', textDecoration: 'underline' };
 const DETAIL_LINK = { color: DETAIL_GRAY, textDecoration: 'none' };
+const LOGO_LINK = {
+  textDecoration: 'none',
+  border: 0,
+  outline: 'none',
+  display: 'inline-block',
+  lineHeight: 0
+};
 
 const toMapsHref = (address) => {
   const plain = address.replace(/<br\s*\/?>/gi, ', ').replace(/<[^>]+>/g, '').trim();
@@ -99,18 +106,22 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
         {/* Primary (selected company) logo */}
         <tr>
           <td style={{ paddingBottom: '16px' }}>
-            <img
-              src={companyData.logo.src}
-              alt={companyData.logo.alt}
-              width={companyData.logo.width}
-              height={companyData.logo.height}
-              style={{
-                width: `${companyData.logo.width}px`,
-                height: `${companyData.logo.height}px`,
-                objectFit: 'contain',
-                display: 'block'
-              }}
-            />
+            <a href={companyData.logo.href} target="_blank" rel="noopener noreferrer" className="logo-link" style={LOGO_LINK}>
+              <img
+                src={companyData.logo.src}
+                alt={companyData.logo.alt}
+                width={companyData.logo.width}
+                height={companyData.logo.height}
+                border="0"
+                style={{
+                  width: `${companyData.logo.width}px`,
+                  height: `${companyData.logo.height}px`,
+                  objectFit: 'contain',
+                  display: 'block',
+                  border: 0
+                }}
+              />
+            </a>
           </td>
         </tr>
 
@@ -135,18 +146,22 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
                       valign="middle"
                       style={{ paddingRight: index === brandStripLogos.length - 1 ? 0 : '16px' }}
                     >
-                      <img
-                        src={logo.src}
-                        alt={logo.alt}
-                        width={logo.width}
-                        height={logo.height}
-                        style={{
-                          width: `${logo.width}px`,
-                          height: `${logo.height}px`,
-                          objectFit: 'contain',
-                          display: 'block'
-                        }}
-                      />
+                      <a href={logo.href} target="_blank" rel="noopener noreferrer" className="logo-link" style={LOGO_LINK}>
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={logo.width}
+                          height={logo.height}
+                          border="0"
+                          style={{
+                            width: `${logo.width}px`,
+                            height: `${logo.height}px`,
+                            objectFit: 'contain',
+                            display: 'block',
+                            border: 0
+                          }}
+                        />
+                      </a>
                     </td>
                   ))}
                 </tr>

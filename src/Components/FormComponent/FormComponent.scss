@@ -2,6 +2,16 @@
 	background: #fff;
 	cursor: pointer;
 
+	.signature-table {
+		a.logo-link,
+		a.logo-link:hover,
+		a.logo-link:focus,
+		a.logo-link:visited {
+			text-decoration: none !important;
+			border: 0;
+			outline: none;
+		}
+	}
 }
 
 .instructions {
