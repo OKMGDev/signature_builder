@@ -360,9 +360,10 @@ form {
 		align-items: center;
 		gap: 10px;
 		margin-top: auto;
+		padding-top: 30px;
 
 		.button {
-			background: #1B4D2B;
+			background: #FA9C0F;
 			color: #fff;
 			padding: 10px 20px;
 			border-radius: 4px;
@@ -373,7 +374,7 @@ form {
 			border-width: 0px;
 
 			&:hover {
-				background: black;
+				background: #c77c08;
 				color: #fff;
 			}
 		}

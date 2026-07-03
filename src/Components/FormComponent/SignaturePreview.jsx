@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InstallationModal from './InstallationModal';
 import SignatureTable from './SignatureTable';
-import { copySignatureToClipboard, downloadSignatureAsHTML } from './utils/signatureUtils';
+import { copySignatureToClipboard, copySignatureCodeToClipboard, downloadSignatureAsHTML } from './utils/signatureUtils';
 
 export default class SignaturePreview extends Component {
   constructor(props) {
@@ -28,6 +28,13 @@ export default class SignaturePreview extends Component {
 
   handleCopy = async () => {
     const success = await copySignatureToClipboard();
+    if (success) {
+      this.props.onCopy();
+    }
+  }
+
+  handleCopyCode = async () => {
+    const success = await copySignatureCodeToClipboard();
     if (success) {
       this.props.onCopy();
     }
@@ -61,6 +68,7 @@ export default class SignaturePreview extends Component {
 
         <div className="signature-preview-footer">
           <button className="button" onClick={this.handleCopy}>Copy</button>
+          <button className="button" onClick={this.handleCopyCode}>Copy Code</button>
           <button className="button" onClick={this.handleDownload}>Download</button>
           <button className="button" onClick={this.openInstallationModal}>Installation Instruction</button>
         </div>
