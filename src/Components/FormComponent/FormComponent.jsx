@@ -19,6 +19,7 @@ export default class FormComponent extends React.Component {
       job: '',
       mobile: '',
       email: '',
+      hideNameTitle: false,
       tooltip: '',
       toolinfo: 'click to copy signature!'
     };
@@ -60,8 +61,14 @@ export default class FormComponent extends React.Component {
     });
   }
 
+  hideNameTitleChange = (e) => {
+    this.setState({
+      hideNameTitle: e.target.checked
+    });
+  }
+
   render() {
-    const { name, job, mobile, email, tooltip, toolinfo } = this.state;
+    const { name, job, mobile, email, hideNameTitle, tooltip, toolinfo } = this.state;
 
     return (
       <div className="wrapper">
@@ -95,10 +102,12 @@ export default class FormComponent extends React.Component {
             job={job}
             mobile={mobile}
             email={email}
+            hideNameTitle={hideNameTitle}
             onNameChange={this.nameChange}
             onJobChange={this.jobChange}
             onMobileChange={this.mobileChange}
             onEmailChange={this.emailChange}
+            onHideNameTitleChange={this.hideNameTitleChange}
           />
 
           <SignaturePreview
@@ -106,6 +115,7 @@ export default class FormComponent extends React.Component {
             job={job}
             mobile={mobile}
             email={email}
+            hideNameTitle={hideNameTitle}
             tooltip={tooltip}
             toolinfo={toolinfo}
             onTooltipShow={this.toolTipShow}

@@ -385,10 +385,16 @@ form {
 .signature-table {
 	width: 520px;
 	border-collapse: collapse;
+	border: none;
+	border-width: 0;
+	border-style: none;
 
 	td {
 		padding: 2px 0;
 		vertical-align: top;
+		border: none;
+		border-width: 0;
+		border-style: none;
 	}
 
 	// Company logo styling

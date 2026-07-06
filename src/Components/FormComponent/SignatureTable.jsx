@@ -3,12 +3,24 @@ import { COMPANY_LOGOS, COMPANY_DETAILS, DISCLAIMER_TEXT, SIGNATURE_STYLES } fro
 
 const LINK_STYLE = { color: '#000000', textDecoration: 'none' };
 
+const NO_BORDER = {
+  border: 'none',
+  borderWidth: 0,
+  borderStyle: 'none',
+  borderColor: 'transparent'
+};
+
+const TABLE_STYLE = {
+  borderCollapse: 'collapse',
+  ...NO_BORDER
+};
+
 // Base table-cell styling kept inline so the copied signature renders
 // correctly in email clients (Gmail, Outlook, Apple Mail) without external CSS.
-const cell = (extra = {}) => ({ padding: '2px 0', verticalAlign: 'top', ...extra });
+const cell = (extra = {}) => ({ padding: '2px 0', verticalAlign: 'top', ...NO_BORDER, ...extra });
 const LABEL_STYLE = cell({ ...SIGNATURE_STYLES.contact, fontWeight: 'bold', paddingRight: '6px', whiteSpace: 'nowrap' });
 
-const SignatureTable = ({ name, job, mobile, email }) => {
+const SignatureTable = ({ name, job, mobile, email, hideNameTitle }) => {
   const companyLogo = COMPANY_LOGOS['Pure Leasing'];
   const company = COMPANY_DETAILS['Pure Leasing'];
   const hasMobile = mobile && mobile.trim() !== '';
@@ -28,23 +40,27 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         fontSize: '14px',
         lineHeight: '16px',
         width: '520px',
-        borderCollapse: 'collapse'
+        ...TABLE_STYLE
       }}
     >
       <tbody>
-        <tr>
-          <td style={cell(SIGNATURE_STYLES.name)}>{name || 'Name'}</td>
-        </tr>
-        <tr>
-          <td style={cell(SIGNATURE_STYLES.job)}>
-            {job || 'Job Title'}
-            <br /><br />
-          </td>
-        </tr>
+        {!hideNameTitle && (
+          <>
+            <tr>
+              <td style={cell(SIGNATURE_STYLES.name)}>{name || 'Name'}</td>
+            </tr>
+            <tr>
+              <td style={cell(SIGNATURE_STYLES.job)}>
+                {job || 'Job Title'}
+                <br /><br />
+              </td>
+            </tr>
+          </>
+        )}
 
         <tr>
           <td style={cell()}>
-            <table border={0} cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+            <table border={0} cellSpacing="0" cellPadding="0" style={TABLE_STYLE}>
               <tbody>
                 {hasMobile && (
                   <tr>

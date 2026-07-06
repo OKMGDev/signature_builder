@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4bac98ec56bc20d2a93a7bc98eea7891",
+    "revision": "a79871ecef4c233e4824a460df7c42fa",
     "url": "/pureleasing/index.html"
   },
   {
-    "revision": "fbde79fbf1923927df0b",
-    "url": "/pureleasing/static/css/main.20ec3254.chunk.css"
+    "revision": "549f55f46c7b8b2a7aef",
+    "url": "/pureleasing/static/css/main.475533f2.chunk.css"
   },
   {
     "revision": "51db69cfe15ebf79dac1",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pureleasing/static/js/2.bf19a925.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fbde79fbf1923927df0b",
-    "url": "/pureleasing/static/js/main.3201fd3d.chunk.js"
+    "revision": "549f55f46c7b8b2a7aef",
+    "url": "/pureleasing/static/js/main.85443119.chunk.js"
   },
   {
     "revision": "9cdab70fc8dc90dd9b18",

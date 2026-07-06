@@ -8,10 +8,12 @@ export default class Form extends Component {
       job,
       mobile,
       email,
+      hideNameTitle,
       onNameChange,
       onJobChange,
       onMobileChange,
-      onEmailChange
+      onEmailChange,
+      onHideNameTitleChange
     } = this.props;
 
     return (
@@ -56,6 +58,19 @@ export default class Form extends Component {
             onChange={onEmailChange}
             placeholder="Enter your email address"
           />
+        </fieldset>
+        <fieldset>
+          <div className="company-checkboxes">
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
+                id="hide-name-title"
+                checked={hideNameTitle}
+                onChange={onHideNameTitleChange}
+              />
+              <label htmlFor="hide-name-title">Hide name and job title from signature</label>
+            </div>
+          </div>
         </fieldset>
       </form>
     );
