@@ -63,6 +63,13 @@ export const CLIENTS = [
     route: '/hairsupplies',
     version: 'v1',
     versionRoute: '/hairsupplies/v1'
+  },
+  {
+    slug: 'heirloom',
+    name: 'Heirloom Honey Co.',
+    route: '/heirloom',
+    version: 'v1',
+    versionRoute: '/heirloom/v1'
   }
 ];
 
