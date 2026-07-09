@@ -1,0 +1,131 @@
+/*
+ FORM COMPONENT
+*/
+
+import React, { Component } from 'react';
+import './FormComponent.scss';
+import Form from './Form';
+import SignaturePreview from './SignaturePreview';
+import pureLeasingLogo from './assets/logo.png';
+import { formatPhoneNumber } from './utils/signatureUtils';
+
+export default class FormComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // State.
+    this.state = {
+      name: '',
+      job: '',
+      mobile: '',
+      email: '',
+      signatureType: 'personal',
+      tooltip: '',
+      toolinfo: 'click to copy signature!'
+    };
+  }
+
+  nameChange = (e) => {
+    let value = e.target.value;
+    this.setState({
+      name: value
+    });
+  }
+
+  mobileChange = (e) => {
+    const value = formatPhoneNumber(e.target.value);
+    this.setState({
+      mobile: value
+    });
+  }
+
+
+  emailChange = (e) => {
+    let value = e.target.value;
+    this.setState({
+      email: value
+    });
+  }
+
+  copyContent = () => {
+    this.setState({
+      tooltip: 'copied',
+      toolinfo: 'copied!'
+    })
+  }
+
+  jobChange = (e) => {
+    let value = e.target.value;
+    this.setState({
+      job: value
+    });
+  }
+
+  signatureTypeChange = (e) => {
+    this.setState({
+      signatureType: e.target.value
+    });
+  }
+
+  render() {
+    const { name, job, mobile, email, signatureType, tooltip, toolinfo } = this.state;
+
+    return (
+      <div className="wrapper">
+        <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <span>
+            <img
+              src={pureLeasingLogo}
+              width={200}
+              style={{ "marginBottom": "5px" }}
+              alt="Pure Leasing Logo"
+            />
+          </span>
+          <span>Signature Generator</span>
+        </h1>
+
+        <div className="welcome-text" >
+          <p>
+            Welcome to your custom signature generator, designed and hosted by OKMG.
+          </p>
+          <p>Complete the fields below to prepare your email signature. The Pure Leasing logo will be automatically included in your signature.
+          </p>
+          <p>For any support enquiries, please contact web@okmg.com - Thank you!
+          </p>
+        </div>
+
+        <div className="signature-section-wrapper">
+
+
+          <Form
+            name={name}
+            job={job}
+            mobile={mobile}
+            email={email}
+            signatureType={signatureType}
+            onNameChange={this.nameChange}
+            onJobChange={this.jobChange}
+            onMobileChange={this.mobileChange}
+            onEmailChange={this.emailChange}
+            onSignatureTypeChange={this.signatureTypeChange}
+          />
+
+          <SignaturePreview
+            name={name}
+            job={job}
+            mobile={mobile}
+            email={email}
+            signatureType={signatureType}
+            tooltip={tooltip}
+            toolinfo={toolinfo}
+            onTooltipShow={this.toolTipShow}
+            onTooltipHide={this.toolTipHide}
+            onCopy={this.copyContent}
+          />
+        </div>
+
+
+      </div>
+    );
+  }
+}

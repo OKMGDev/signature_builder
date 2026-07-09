@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
-import { FormComponent } from './Components/FormComponent';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import { CLIENT_ROUTES } from './clients/registry';
 
 function App() {
   return (
-    <div className="App">
-      <FormComponent />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Suspense fallback={<div className="loading">Loading signature generator...</div>}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            {CLIENT_ROUTES.flatMap((client) => [
+              <Route
+                key={client.route}
+                exact
+                path={client.route}
+                component={client.component}
+              />,
+              <Route
+                key={client.versionRoute}
+                exact
+                path={client.versionRoute}
+                component={client.component}
+              />
+            ])}
+            <Route component={NotFound} />
+          </Switch>
+        </Suspense>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
-
