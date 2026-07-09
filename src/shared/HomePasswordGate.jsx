@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from 'react';
 
 const AUTH_KEY = 'okmg_home_auth';
+const HOME_PASSWORD = 'Stirling12345';
 
 const HomePasswordGate = ({ children }) => {
-  const expectedPassword = process.env.REACT_APP_HOME_PASSWORD;
   const [isAuthed, setIsAuthed] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!expectedPassword) {
-      setIsAuthed(true);
-      return;
-    }
-
     if (sessionStorage.getItem(AUTH_KEY) === '1') {
       setIsAuthed(true);
     }
-  }, [expectedPassword]);
+  }, []);
 
-  if (!expectedPassword || isAuthed) {
+  if (isAuthed) {
     return children;
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (password === expectedPassword) {
+    if (password === HOME_PASSWORD) {
       sessionStorage.setItem(AUTH_KEY, '1');
       setIsAuthed(true);
       setError('');

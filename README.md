@@ -113,7 +113,6 @@ Copy `.env.example` → `.env`. Images are copied to `public/clients/` automatic
 | Variable | Where | Purpose |
 |----------|-------|---------|
 | `REACT_APP_SIGNATURE_CDN` | Vercel + `.env` | S3/CDN base for signature image URLs |
-| `REACT_APP_HOME_PASSWORD` | Vercel + `.env` | Password for homepage client list |
 | `AWS_S3_BUCKET` | `.env` only | Local `npm run sync:s3` |
 | `AWS_REGION` | `.env` only | Local `npm run sync:s3` |
 
@@ -121,8 +120,9 @@ Copy `.env.example` → `.env`. Images are copied to `public/clients/` automatic
 
 ```
 REACT_APP_SIGNATURE_CDN=https://okmg-signatures-assets.s3.ap-southeast-2.amazonaws.com/signatures
-REACT_APP_HOME_PASSWORD=<your-password>
 ```
+
+The homepage password is hardcoded in `src/shared/HomePasswordGate.jsx`.
 
 ## Deployment
 
