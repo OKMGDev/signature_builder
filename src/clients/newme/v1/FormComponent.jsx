@@ -2,7 +2,7 @@
  FORM COMPONENT
 */
 
-import React, { Component } from 'react';
+import React from 'react';
 import './FormComponent.scss';
 import Form from './Form';
 import SignaturePreview from './SignaturePreview';
