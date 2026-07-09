@@ -2,17 +2,57 @@
 
 export const stripPhoneDigits = (phone) => phone.replace(/\D/g, '');
 
+export const normalizeAustralianMobileDigits = (value) => {
+  let digits = stripPhoneDigits(value);
+
+  if (digits === '61') {
+    return '';
+  }
+
+  if (digits.startsWith('61') && digits.length > 2) {
+    digits = digits.slice(2);
+  }
+
+  if (digits.startsWith('0')) {
+    digits = digits.slice(1);
+  }
+
+  return digits.slice(0, 9);
+};
+
 export const formatAustralianMobile = (value) => {
-  const digits = stripPhoneDigits(value).slice(0, 10);
-  if (digits.length <= 4) return digits;
-  if (digits.length <= 7) return `${digits.slice(0, 4)} ${digits.slice(4)}`;
-  return `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`;
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return '';
+  }
+
+  const digits = normalizeAustralianMobileDigits(value);
+
+  if (!digits) {
+    if (/^\+61?$/.test(trimmed) || trimmed === '+6') {
+      return trimmed;
+    }
+    return trimmed.startsWith('+') ? '+61' : '';
+  }
+
+  const prefix = '+61 ';
+
+  if (digits.length <= 3) {
+    return `${prefix}${digits}`;
+  }
+
+  if (digits.length <= 6) {
+    return `${prefix}${digits.slice(0, 3)} ${digits.slice(3)}`;
+  }
+
+  return `${prefix}${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
 };
 
 export const toTelHref = (phone) => {
   if (!phone) return null;
-  const digits = stripPhoneDigits(phone);
-  return digits ? `tel:${digits}` : null;
+  const digits = normalizeAustralianMobileDigits(phone);
+  return digits ? `tel:+61${digits}` : null;
 };
 
 export const copySignatureToClipboard = async () => {

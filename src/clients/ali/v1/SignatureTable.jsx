@@ -4,7 +4,7 @@ import COMPANIES, {
   DETAIL_GRAY,
   SIGNATURE_STYLES
 } from './constants/companyData';
-import { formatAustralianMobile, toTelHref } from './utils/signatureUtils';
+import { formatAustralianMobile, normalizeAustralianMobileDigits, toTelHref } from './utils/signatureUtils';
 
 const DISCLAIMER_TEXT =
   'Disclaimer: The information contained in this email and any attached files may be confidential information. If you are not the intended recipient, any use, disclosure or copying of this email is unauthorised. If you have received this email in error, please notify the sender by reply email and delete the original. Thank you.';
@@ -48,8 +48,9 @@ const ContactRow = ({ label, children }) => (
 
 const SignatureTable = ({ name, job, company, mobile, email }) => {
   const companyData = company && COMPANIES[company] ? COMPANIES[company] : COMPANIES['Aquatic Life Industries'];
-  const mobileDisplay = mobile ? formatAustralianMobile(mobile) : '0000 000 000';
-  const mobileHref = mobile ? toTelHref(mobile) : null;
+  const mobileDigits = mobile ? normalizeAustralianMobileDigits(mobile) : '';
+  const mobileDisplay = mobileDigits ? formatAustralianMobile(mobile) : '000 000 000';
+  const mobileHref = mobileDigits ? toTelHref(mobile) : null;
   const companyPhoneHref = toTelHref(companyData.phone);
   const mapsHref = toMapsHref(companyData.address);
   const websiteDisplay = companyData.website.replace(/^www\./i, '');
