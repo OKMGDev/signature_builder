@@ -1,8 +1,5 @@
 import React from 'react';
-import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
-import { getSignatureAssetUrl } from '../../../shared/utils/assets';
-
-const CERTIFICATES_SRC = getSignatureAssetUrl('beyondtraffic', 'v1', 'certificates.jpg');
+import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES, SIGNATURE_IMAGES } from './constants/companyData';
 
 const SignatureTable = ({ name, job, mobile, email }) => {
   const companyLogo = COMPANY_LOGOS['Beyond Traffic Management'];
@@ -102,7 +99,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         <tr>
           <td style={{ paddingTop: '20px', padding: '4px 0' }}>
             <img
-              src={CERTIFICATES_SRC}
+              src={SIGNATURE_IMAGES.certificates}
               alt="Certificates"
               style={{
                 width: '100%',

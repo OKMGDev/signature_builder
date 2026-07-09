@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import './FormComponent.scss';
 import Form from './Form';
 import SignaturePreview from './SignaturePreview';
+import { FORM_LOGO } from './constants/assets';
 
 export default class FormComponent extends React.Component {
   constructor(props) {
@@ -87,7 +88,7 @@ export default class FormComponent extends React.Component {
         <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <span>
             <img
-              src="https://cdn.prod.website-files.com/6639be971dc3625ee145fd74/68bfeaf6b60ac326a3bce9a1_newme.png"
+              src={FORM_LOGO}
               width={250}
               style={{ "marginBottom": "5px" }}
               alt="New Me Logo"

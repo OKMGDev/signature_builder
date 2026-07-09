@@ -19,6 +19,7 @@
     "prestart": "node scripts/copy-signature-assets.js",
     "start": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts start",
     "build": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts build",
+    "sync:s3": "bash scripts/sync-s3.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

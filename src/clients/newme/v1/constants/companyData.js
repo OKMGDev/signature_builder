@@ -1,12 +1,14 @@
+import { asset } from './assets';
+
 export const COMPANY_LOGOS = {
   'New Me': {
-    src: 'https://cdn.prod.website-files.com/6639be971dc3625ee145fd74/68bfeaf6b60ac326a3bce9a1_newme.png',
+    src: asset('logos/newme.png'),
     alt: 'New Me',
     width: 200,
     height: 60
   },
   'Allieve': {
-    src: 'https://cdn.prod.website-files.com/6639be971dc3625ee145fd74/68bfeaf6f510c2f697bcb768_allieve.png',
+    src: asset('logos/allieve.png'),
     alt: 'Allieve',
     width: 200,
     height: 60

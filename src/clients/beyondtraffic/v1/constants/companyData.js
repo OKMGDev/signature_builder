@@ -1,11 +1,16 @@
+import { asset } from './assets';
 
 export const COMPANY_LOGOS = {
   'Beyond Traffic Management': {
-    src: 'https://www.beyondtraffic.com.au/wp-content/uploads/2025/04/Beyond_1-768x112.png',
+    src: asset('logo.png'),
     alt: 'Beyond Traffic Management',
     width: 250,
     height: 36
   }
+};
+
+export const SIGNATURE_IMAGES = {
+  certificates: asset('certificates.jpg')
 };
 
 export const COMPANY_WEBSITES = {
@@ -13,7 +18,6 @@ export const COMPANY_WEBSITES = {
     url: 'https://www.beyondtraffic.com.au<br />https://www.beyondtrafficmanagement.com.au',
     label: 'www.beyondtraffic.com.au <br />www.beyondtrafficmanagement.com.au'
   }
-
 };
 
 export const SIGNATURE_STYLES = {

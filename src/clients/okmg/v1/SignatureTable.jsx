@@ -1,8 +1,5 @@
 import React from 'react';
 import { COMPANY_LOGOS, COMPANY_WEBSITES, SIGNATURE_STYLES } from './constants/companyData';
-import { getSignatureAssetUrl } from '../../../shared/utils/assets';
-
-const LOGO_BIGGER_SRC = getSignatureAssetUrl('okmg', 'v1', 'logo-bigger.jpg');
 
 const SignatureTable = ({ name, job, mobile, email, meetingSchedule }) => {
   const companyLogo = COMPANY_LOGOS['OKMG'];
@@ -36,7 +33,7 @@ const SignatureTable = ({ name, job, mobile, email, meetingSchedule }) => {
             }}
           >
             <img
-              src={LOGO_BIGGER_SRC}
+              src={companyLogo.src}
               alt={companyLogo.alt}
               style={{
                 width: 'auto',

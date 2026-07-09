@@ -1,10 +1,11 @@
+import { asset } from './assets';
 
 export const COMPANY_LOGOS = {
   'OKMG': {
-    src: 'https://www.beyondtraffic.com.au/wp-content/uploads/2025/04/Beyond_1-768x112.png',
+    src: asset('logo-bigger.jpg'),
     alt: 'OKMG',
-    width: 250,
-    height: 36
+    width: 180,
+    height: 180
   }
 };
 
@@ -13,7 +14,6 @@ export const COMPANY_WEBSITES = {
     url: 'https://okmg.com',
     label: 'www.okmg.com'
   }
-
 };
 
 export const SIGNATURE_STYLES = {

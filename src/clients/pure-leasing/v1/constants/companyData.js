@@ -1,8 +1,8 @@
-import { getSignatureAssetUrl } from '../../../../shared/utils/assets';
+import { asset } from './assets';
 
 export const COMPANY_LOGOS = {
   'Pure Leasing': {
-    src: getSignatureAssetUrl('pure-leasing', 'v1', 'pure-logo.png'),
+    src: asset('pure-logo.png'),
     alt: 'Pure Leasing',
     width: 180,
     height: 57

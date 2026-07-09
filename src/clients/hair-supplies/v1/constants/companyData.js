@@ -1,12 +1,14 @@
+import { asset } from './assets';
+
 export const COMPANY_LOGOS = {
   'Hair Supplies': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/hs-email.png?v=1758250324',
+    src: asset('logos/hs-email.png'),
     alt: 'Hair Supplies',
     width: 250,
     height: 60
   },
   'Hair Online': {
-    src: 'https://cdn.shopify.com/s/files/1/0026/1560/7341/files/ho-email.png?v=1758250324',
+    src: asset('logos/ho-email.png'),
     alt: 'Hair Online',
     width: 250,
     height: 60

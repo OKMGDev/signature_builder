@@ -1,8 +1,8 @@
-import { getSignatureAssetUrl } from '../../../../shared/utils/assets';
+import { asset } from './assets';
 
 export const COMPANY_LOGOS = {
   'Globe Metals & Mining': {
-    src: getSignatureAssetUrl('gmm', 'v1', 'logo.png'),
+    src: asset('logo.png'),
     alt: 'Globe Metals & Mining',
     width: 165,
     height: 50

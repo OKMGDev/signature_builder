@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'assets/signatures/**'
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -22,5 +23,7 @@ jobs:
 
       - name: Sync assets to S3
         run: |
+          # Never use --delete: pasted email signatures depend on stable versioned URLs.
+          # Add new logos under v2/ instead of overwriting v1/ files.
           aws s3 sync assets/signatures/ s3://${{ secrets.AWS_S3_BUCKET }}/signatures/ \
-            --cache-control "public, max-age=31536000, immutable"
+            --cache-control "public, max-age=31536000"

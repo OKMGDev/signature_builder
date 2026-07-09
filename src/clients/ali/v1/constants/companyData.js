@@ -1,8 +1,6 @@
-import { getSignatureAssetUrl } from '../../../../shared/utils/assets';
+import { asset } from './assets';
 
-const CLIENT = 'ali';
-const VERSION = 'v1';
-const logo = (file) => getSignatureAssetUrl(CLIENT, VERSION, `logos/${file}`);
+const logo = (file) => asset(`logos/${file}`);
 
 const PRIMARY_LOGO_HEIGHT = 52;
 const BRAND_LOGO_HEIGHT = 35;

@@ -6,6 +6,8 @@ export const getSignatureAssetUrl = (client, version, file) => {
     return `${cdn.replace(/\/$/, '')}/${assetPath}`;
   }
 
+  const publicUrl = process.env.PUBLIC_URL || '';
   const origin = typeof window !== 'undefined' && window.location ? window.location.origin : '';
-  return `${origin}/clients/${client}/${version}/${file}`;
+  const base = `${origin}${publicUrl}`.replace(/\/$/, '');
+  return `${base}/${assetPath}`;
 };

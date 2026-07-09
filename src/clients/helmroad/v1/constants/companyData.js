@@ -1,8 +1,8 @@
-import { getSignatureAssetUrl } from '../../../../shared/utils/assets';
+import { asset } from './assets';
 
 export const COMPANY_LOGOS = {
   'Helm Road': {
-    src: getSignatureAssetUrl('helmroad', 'v1', 'logo.png'),
+    src: asset('logo.png'),
     alt: 'Helm Road',
     width: 200,
     height: 48
