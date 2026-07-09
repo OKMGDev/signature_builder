@@ -6,7 +6,7 @@ import React from 'react';
 import './FormComponent.scss';
 import Form from './Form';
 import SignaturePreview from './SignaturePreview';
-import pureLeasingLogo from './assets/logo.png';
+import { FORM_LOGO } from './constants/assets';
 import { formatPhoneNumber } from './utils/signatureUtils';
 
 export default class FormComponent extends React.Component {
@@ -75,7 +75,7 @@ export default class FormComponent extends React.Component {
         <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <span>
             <img
-              src={pureLeasingLogo}
+              src={FORM_LOGO}
               width={200}
               style={{ "marginBottom": "5px" }}
               alt="Pure Leasing Logo"

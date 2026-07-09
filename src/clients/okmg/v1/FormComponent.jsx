@@ -6,7 +6,7 @@ import React from 'react';
 import './FormComponent.scss';
 import Form from './Form';
 import SignaturePreview from './SignaturePreview';
-import beyondTrafficLogo from './assets/logo.png';
+import { FORM_LOGO } from './constants/assets';
 
 export default class FormComponent extends React.Component {
   constructor(props) {
@@ -75,7 +75,7 @@ export default class FormComponent extends React.Component {
         <h1 style={{ paddingBottom: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <span>
             <img
-              src={beyondTrafficLogo}
+              src={FORM_LOGO}
               width={200}
               style={{ "marginBottom": "5px" }}
               alt="OKMG"

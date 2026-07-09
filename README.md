@@ -1,8 +1,37 @@
-# OKMG Signature Generator (Unified Monorepo)
+# OKMG Signature Generator
 
-All client email signature generators in one app. One deploy serves every client.
+Unified monorepo for all client email signature generators. One Vercel deploy serves every client; signature images are hosted on S3 with stable versioned URLs.
 
-## Live routes
+## Architecture
+
+```
+GitHub (main)
+    │
+    ├── push assets/signatures/** ──► GitHub Action ──► S3 (okmg-signatures-assets)
+    │
+    └── push any code ──────────────► Vercel build ───► React SPA
+
+Browser
+    │
+    ├── /                    Homepage (password-protected client list)
+    ├── /pureleasing         Client signature generator
+    ├── /ali                 Client signature generator
+    └── /{client}/v1         Frozen version route
+```
+
+### How it fits together
+
+| Layer | Role |
+|-------|------|
+| **React app** | Form + live preview per client; copied HTML uses absolute image URLs |
+| **`src/clients/registry.js`** | Routes, lazy-loaded client modules, version paths |
+| **`assets/signatures/`** | Image source of truth in git; synced to S3 on push |
+| **`getSignatureAssetUrl()`** | Builds production CDN URLs or local `/clients/...` fallback |
+| **`createClientAssets(slug, version)`** | Per-client helper — never overwrite published version folders |
+| **S3** | Public-read signature images at stable URLs for pasted emails |
+| **Vercel** | Hosts the SPA; `REACT_APP_*` env vars baked in at build time |
+
+### Client routes
 
 | Client | URL |
 |--------|-----|
@@ -16,47 +45,59 @@ All client email signature generators in one app. One deploy serves every client
 | New Me | `/newme` |
 | Hair Supplies | `/hairsupplies` |
 
-Index page listing all clients: `/`
+Versioned routes (e.g. `/pureleasing/v1`) pin a frozen layout. The homepage at `/` lists all clients and is password-protected.
 
-Versioned routes (e.g. `/pureleasing/v1`) are also supported.
-
-## Project structure
+### Project layout
 
 ```
-src/clients/{slug}/v1/
-  constants/assets.js      # Versioned asset URLs (asset('logo.png'))
-  constants/companyData.js # Logo paths via asset()
-assets/signatures/clients/ # Image source of truth (synced to S3)
-src/shared/utils/
-  assets.js                # getSignatureAssetUrl() — CDN or local fallback
-  clientAssets.js          # createClientAssets(slug, version)
-src/shared/                # Shared InstallationModal
+src/
+  App.js                     React Router entry
+  clients/
+    registry.js              Client list + routes
+    {slug}/v1/
+      constants/assets.js    createClientAssets + asset()
+      constants/companyData.js
+      FormComponent.jsx
+      SignatureTable.jsx
+  shared/
+    InstallationModal.jsx
+    HomePasswordGate.jsx
+    utils/assets.js          getSignatureAssetUrl()
+    utils/clientAssets.js    createClientAssets()
+  pages/Home.jsx             Password-protected index
+assets/signatures/clients/   Images (synced to S3)
+scripts/
+  copy-signature-assets.js   Copies to public/clients/ for local dev
+  sync-s3.sh                 Manual S3 upload
+.github/workflows/sync-s3.yml
+vercel.json                  SPA rewrites
 ```
 
 ## Image management
 
 All signature images live in `assets/signatures/clients/{slug}/{version}/`.
 
-Each client version has `constants/assets.js`:
-
 ```js
-import { createClientAssets } from '../../../../shared/utils/clientAssets';
+// src/clients/helmroad/v1/constants/assets.js
+export const { asset } = createClientAssets('helmroad', 'v1');
 
-export const { clientSlug, version, asset } = createClientAssets('helmroad', 'v1');
+// src/clients/helmroad/v1/constants/companyData.js
+src: asset('logo.png')
 ```
 
-Use `asset('logo.png')` in `companyData.js` — never hardcode external URLs.
+**Production URL shape:**
 
-**URL shape (production):** `{REACT_APP_SIGNATURE_CDN}/clients/{slug}/{version}/{file}`
+```
+https://okmg-signatures-assets.s3.ap-southeast-2.amazonaws.com/signatures/clients/{slug}/{version}/{file}
+```
 
 **Updating a logo without breaking old signatures:**
 
-1. Do **not** overwrite files in a published version folder (e.g. `v1/logo.png`)
-2. Create `assets/signatures/clients/{slug}/v2/` with the new images
-3. Duplicate `src/clients/{slug}/v1/` → `v2/`, set `createClientAssets('{slug}', 'v2')` in the new `assets.js`
-4. Point the main route in `registry.js` at `v2`; keep `/slug/v1` for the frozen version
-5. Push — S3 sync uploads `v2/` alongside `v1/`; old pasted signatures keep loading `v1` URLs
-
+1. Do not overwrite files in a published version folder (e.g. `v1/logo.png`)
+2. Add images under `assets/signatures/clients/{slug}/v2/`
+3. Duplicate `src/clients/{slug}/v1/` → `v2/`, bump version in `assets.js`
+4. Point the main route in `registry.js` at `v2`; keep `/slug/v1` live
+5. Push — S3 sync adds `v2/` alongside `v1/`; pasted emails keep loading old URLs
 
 ## Local development
 
@@ -65,93 +106,56 @@ npm install
 npm start
 ```
 
-Signature images are copied from `assets/signatures/clients/` to `public/clients/` automatically via `prestart` / `prebuild`.
+Copy `.env.example` → `.env`. Images are copied to `public/clients/` automatically via `prestart` / `prebuild`.
 
 ## Environment variables
 
-| Variable | Description |
-|----------|-------------|
-| `REACT_APP_SIGNATURE_CDN` | Image base URL for production builds |
-| `AWS_S3_BUCKET` | S3 bucket name (local `npm run sync:s3` only) |
-| `AWS_REGION` | AWS region (local sync only) |
+| Variable | Where | Purpose |
+|----------|-------|---------|
+| `REACT_APP_SIGNATURE_CDN` | Vercel + `.env` | S3/CDN base for signature image URLs |
+| `REACT_APP_HOME_PASSWORD` | Vercel + `.env` | Password for homepage client list |
+| `AWS_S3_BUCKET` | `.env` only | Local `npm run sync:s3` |
+| `AWS_REGION` | `.env` only | Local `npm run sync:s3` |
 
-**Production value:**
+**Vercel (production):**
 
 ```
 REACT_APP_SIGNATURE_CDN=https://okmg-signatures-assets.s3.ap-southeast-2.amazonaws.com/signatures
+REACT_APP_HOME_PASSWORD=<your-password>
 ```
 
-Without `REACT_APP_SIGNATURE_CDN`, images are served from `/clients/...` on the same domain (local dev fallback).
+## Deployment
 
-## S3 asset deployment
+### S3 (`okmg-signatures-assets`, ap-southeast-2)
 
-**Bucket:** `okmg-signatures-assets` · **Region:** `ap-southeast-2`
+Images sync to `s3://okmg-signatures-assets/signatures/clients/{slug}/{version}/...`
 
-Signature images in `assets/signatures/` sync to:
+- **Auto:** GitHub Action on push to `main` when `assets/signatures/**` changes
+- **Manual:** Actions → Sync Signature Assets to S3, or `npm run sync:s3` locally
+- Sync never uses `--delete` — old version folders stay on S3
 
-```
-s3://okmg-signatures-assets/signatures/clients/{slug}/{version}/...
-```
-
-### One-time AWS setup
-
-1. **Public read** — attach `infra/s3-bucket-policy.json` in S3 → Bucket → Permissions → Bucket policy
-2. **Block public access** — allow public policies for this bucket (S3 → Permissions → Block public access → edit)
-3. **IAM user for GitHub** — create a user with `infra/iam-s3-sync-policy.json`, save access keys
-
-### GitHub secrets (`OKMGDev/signature_builder`)
-
-| Secret | Value |
-|--------|-------|
-| `AWS_ACCESS_KEY_ID` | IAM user access key |
-| `AWS_SECRET_ACCESS_KEY` | IAM user secret |
-| `AWS_S3_BUCKET` | `okmg-signatures-assets` |
-| `AWS_REGION` | `ap-southeast-2` |
-
-Sync runs on push to `main` when `assets/signatures/**` changes, or manually via Actions → **Sync Signature Assets to S3** → Run workflow.
-
-Local upload: `npm run sync:s3` (requires AWS CLI credentials).
-
-The sync job does **not** use `--delete`, so old version folders remain on S3 indefinitely.
+**GitHub secrets:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_S3_BUCKET`, `AWS_REGION`
 
 ### Vercel
 
-Set `REACT_APP_SIGNATURE_CDN` to:
+1. Import `OKMGDev/signature_builder`, branch `main`
+2. Build: `npm run build` · Output: `build`
+3. Set env vars above · Deploy
 
-```
-https://okmg-signatures-assets.s3.ap-southeast-2.amazonaws.com/signatures
-```
+Direct client URLs (e.g. `/pureleasing`) work without the homepage password. The password only hides the client index at `/`.
 
-## Vercel deployment
+## Adding a client
 
-1. Connect this repo to Vercel
-2. Production branch: `main`
-3. Build command: `npm run build`
-4. Output directory: `build`
-5. Set `REACT_APP_SIGNATURE_CDN` in Vercel environment variables
-
-`vercel.json` handles SPA routing for all client paths.
-
-## Adding a new client
-
-1. Copy an existing client folder: `src/clients/helmroad/v1/` → `src/clients/{new-slug}/v1/`
-2. Add images under `assets/signatures/clients/{new-slug}/v1/`
-3. Set `createClientAssets('{new-slug}', 'v1')` in `constants/assets.js`
+1. Copy `src/clients/helmroad/v1/` → `src/clients/{slug}/v1/`
+2. Add images under `assets/signatures/clients/{slug}/v1/`
+3. Set `createClientAssets('{slug}', 'v1')` in `constants/assets.js`
 4. Register in `src/clients/registry.js`
-5. Push to `main` — S3 sync + Vercel deploy run automatically
+5. Push to `main`
 
-## Adding a new version
+## Adding a version
 
 1. Duplicate `src/clients/{slug}/v1/` → `v2/`
-2. Add **new** images under `assets/signatures/clients/{slug}/v2/` (do not modify `v1/` files)
-3. Update `createClientAssets` version in the new `constants/assets.js`
-4. Add route in `registry.js` (e.g. `/pureleasing/v2`) and point the main route at the latest version
-5. Keep `v1` on S3 — pasted signatures depend on those stable URLs
-
-## Archived branches
-
-The following per-client branches are superseded by this monorepo:
-
-`client-ali`, `pure-leasing`, `helmroad`, `gmm`, `okmg`, `beyondtraffic`, `main` (spoton), `newme`, `hair-supplies`
-
-Keep them for 30 days as rollback reference, then archive.
+2. Add new images under `assets/signatures/clients/{slug}/v2/` (do not modify `v1/`)
+3. Update version in the new `constants/assets.js`
+4. Add route in `registry.js`; point main route at latest version
+5. Keep `v1` on S3 — pasted signatures depend on those URLs

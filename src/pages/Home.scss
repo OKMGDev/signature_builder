@@ -39,3 +39,51 @@
     }
   }
 }
+
+.home-password-gate {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.home-password-form {
+  h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 24px;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+.home-password-error {
+  color: #c0392b;
+  margin: -8px 0 16px;
+}
