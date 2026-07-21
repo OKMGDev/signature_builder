@@ -2,8 +2,9 @@ import { asset } from './assets';
 
 const logo = (file) => asset(`logos/${file}`);
 
-const PRIMARY_LOGO_HEIGHT = 52;
-const BRAND_LOGO_HEIGHT = 35;
+const ALI_PRIMARY_HEIGHT = 40;
+const STA_PRIMARY_HEIGHT = 53;
+const BRAND_LOGO_HEIGHT = 27;
 
 const sized = (logoDef, targetHeight) => ({
   src: logoDef.src,
@@ -30,24 +31,24 @@ export const BRAND_LOGOS = [
 
 export const COMPANIES = {
   'Aquatic Life Industries': {
-    logo: sized(ALI_LOGO, PRIMARY_LOGO_HEIGHT),
+    logo: sized(ALI_LOGO, ALI_PRIMARY_HEIGHT),
     partnerLogo: sized(STA_LOGO_BLACK, BRAND_LOGO_HEIGHT),
     accent: '#111111',
     name: 'Aquatic Life Industries',
     phone: '',
-    address: 'PO Box 118, Fremantle, WA 6959',
+    address: 'Suite 2/ 3 Norfolk Street, Fremantle, WA 6160',
     website: 'www.aquaticlife.com.au',
-    websiteUrl: 'https://aquaticlife.com.au/'
+    websiteUrl: ALI_URL
   },
   'Southern Trading Australia': {
-    logo: sized(STA_LOGO, PRIMARY_LOGO_HEIGHT),
+    logo: sized(STA_LOGO, STA_PRIMARY_HEIGHT),
     partnerLogo: sized(ALI_LOGO_BLACK, BRAND_LOGO_HEIGHT),
     accent: '#133798',
     name: 'Southern Trading Australia',
     phone: '+61 (08) 9336 5111',
     address: '16 Emplacement Crescent, Hamilton Hill, WA, 6163',
     website: 'www.southerntrading.com.au',
-    websiteUrl: 'https://southerntrading.com.au/'
+    websiteUrl: STA_URL
   }
 };
 
@@ -59,21 +60,21 @@ export const DISCLAIMER_GRAY = '#6c6c6c';
 
 export const SIGNATURE_STYLES = {
   name: {
-    fontSize: '16px',
-    lineHeight: '20px',
+    fontSize: '14px',
+    lineHeight: '18px',
     fontWeight: 'bold'
   },
   job: {
-    fontSize: '12px',
+    fontSize: '14px',
     lineHeight: '18px'
   },
   contact: {
     fontSize: '12px',
-    lineHeight: '18px'
+    lineHeight: '20px'
   },
   contactLabel: {
     fontSize: '12px',
-    lineHeight: '18px',
+    lineHeight: '20px',
     fontWeight: 'bold'
   },
   detail: {

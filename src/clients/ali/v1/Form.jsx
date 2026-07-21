@@ -81,7 +81,7 @@ export default class Form extends Component {
             id="phone"
             value={mobile}
             onChange={onMobileChange}
-            placeholder="+61 466 XXX XXX"
+            placeholder="0000 000 000"
           />
         </fieldset>
         <fieldset>

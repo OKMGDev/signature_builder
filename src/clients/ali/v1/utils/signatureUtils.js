@@ -2,57 +2,37 @@
 
 export const stripPhoneDigits = (phone) => phone.replace(/\D/g, '');
 
+// Normalise to local Australian format (leading 0, no +61), e.g. 0412345678.
 export const normalizeAustralianMobileDigits = (value) => {
   let digits = stripPhoneDigits(value);
-
-  if (digits === '61') {
-    return '';
-  }
 
   if (digits.startsWith('61') && digits.length > 2) {
     digits = digits.slice(2);
   }
 
-  if (digits.startsWith('0')) {
-    digits = digits.slice(1);
+  if (digits && !digits.startsWith('0')) {
+    digits = `0${digits}`;
   }
 
-  return digits.slice(0, 9);
+  return digits.slice(0, 10);
 };
 
 export const formatAustralianMobile = (value) => {
-  const trimmed = value.trim();
-
-  if (!trimmed) {
-    return '';
-  }
-
   const digits = normalizeAustralianMobileDigits(value);
 
   if (!digits) {
-    if (/^\+61?$/.test(trimmed) || trimmed === '+6') {
-      return trimmed;
-    }
-    return trimmed.startsWith('+') ? '+61' : '';
+    return '';
   }
 
-  const prefix = '+61 ';
-
-  if (digits.length <= 3) {
-    return `${prefix}${digits}`;
-  }
-
-  if (digits.length <= 6) {
-    return `${prefix}${digits.slice(0, 3)} ${digits.slice(3)}`;
-  }
-
-  return `${prefix}${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+  // Group as 0000 000 000
+  return [digits.slice(0, 4), digits.slice(4, 7), digits.slice(7, 10)]
+    .filter(Boolean)
+    .join(' ');
 };
 
 export const toTelHref = (phone) => {
-  if (!phone) return null;
   const digits = normalizeAustralianMobileDigits(phone);
-  return digits ? `tel:+61${digits}` : null;
+  return digits ? `tel:${digits}` : null;
 };
 
 export const copySignatureToClipboard = async () => {

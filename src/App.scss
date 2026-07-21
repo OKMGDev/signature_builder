@@ -18,3 +18,22 @@ $white: #fff;
   padding: 40px;
   color: #666;
 }
+
+.app-footer {
+  margin-top: auto;
+  width: 100%;
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #8d8d8d;
+
+  a {
+    color: #265aa8;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

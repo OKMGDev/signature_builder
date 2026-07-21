@@ -29,6 +29,10 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </Suspense>
+        <footer className="app-footer">
+          Developed by{' '}
+          <a href="https://www.okmg.com/" target="_blank" rel="noopener noreferrer">OKMG</a>
+        </footer>
       </div>
     </BrowserRouter>
   );

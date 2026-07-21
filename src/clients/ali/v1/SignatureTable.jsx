@@ -2,6 +2,7 @@ import React from 'react';
 import COMPANIES, {
   BRAND_LOGOS,
   DETAIL_GRAY,
+  EMAIL_BLUE,
   SIGNATURE_STYLES
 } from './constants/companyData';
 import { formatAustralianMobile, normalizeAustralianMobileDigits, toTelHref } from './utils/signatureUtils';
@@ -10,7 +11,8 @@ const DISCLAIMER_TEXT =
   'Disclaimer: The information contained in this email and any attached files may be confidential information. If you are not the intended recipient, any use, disclosure or copying of this email is unauthorised. If you have received this email in error, please notify the sender by reply email and delete the original. Thank you.';
 
 const MOBILE_LINK = { color: '#111111', textDecoration: 'underline' };
-const EMAIL_LINK = { color: '#111111', textDecoration: 'underline' };
+const PHONE_LINK = { color: '#111111', textDecoration: 'underline' };
+const EMAIL_LINK = { color: EMAIL_BLUE, textDecoration: 'underline' };
 const DETAIL_LINK = { color: DETAIL_GRAY, textDecoration: 'none' };
 const LOGO_LINK = {
   textDecoration: 'none',
@@ -19,6 +21,7 @@ const LOGO_LINK = {
   display: 'inline-block',
   lineHeight: 0
 };
+const DIVIDER_COLOR = '#cccccc';
 
 const toMapsHref = (address) => {
   const plain = address.replace(/<br\s*\/?>/gi, ', ').replace(/<[^>]+>/g, '').trim();
@@ -41,21 +44,44 @@ const ContactLink = ({ href, style, children }) => {
 
 const ContactRow = ({ label, children }) => (
   <tr>
-    <td valign="top" style={{ ...SIGNATURE_STYLES.contactLabel, width: '17px', paddingBottom: '4px' }}>{label}</td>
-    <td style={{ ...SIGNATURE_STYLES.contact, whiteSpace: 'nowrap', paddingBottom: '4px' }}>{children}</td>
+    <td valign="top" style={{ ...SIGNATURE_STYLES.contactLabel, width: '20px', paddingRight: '10px' }}>{label}</td>
+    <td style={{ ...SIGNATURE_STYLES.contact, whiteSpace: 'nowrap' }}>{children}</td>
   </tr>
+);
+
+const BrandLogo = ({ logo, paddingRight }) => (
+  <td valign="middle" style={{ paddingRight }}>
+    <a href={logo.href} target="_blank" rel="noopener noreferrer" className="logo-link" style={LOGO_LINK}>
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        width={logo.width}
+        height={logo.height}
+        border="0"
+        style={{
+          width: `${logo.width}px`,
+          height: `${logo.height}px`,
+          objectFit: 'contain',
+          display: 'block',
+          border: 0
+        }}
+      />
+    </a>
+  </td>
 );
 
 const SignatureTable = ({ name, job, company, mobile, email }) => {
   const companyData = company && COMPANIES[company] ? COMPANIES[company] : COMPANIES['Aquatic Life Industries'];
   const mobileDigits = mobile ? normalizeAustralianMobileDigits(mobile) : '';
-  const mobileDisplay = mobileDigits ? formatAustralianMobile(mobile) : '000 000 000';
+  const mobileDisplay = mobileDigits ? formatAustralianMobile(mobile) : '0000 000 000';
   const mobileHref = mobileDigits ? toTelHref(mobile) : null;
   const companyPhoneHref = toTelHref(companyData.phone);
   const mapsHref = toMapsHref(companyData.address);
   const websiteDisplay = companyData.website.replace(/^www\./i, '');
+  const exampleEmail = `example@${websiteDisplay}`;
 
   const brandStripLogos = [companyData.partnerLogo, ...BRAND_LOGOS];
+  const dividerHeight = companyData.phone ? 60 : 40;
 
   return (
     <table
@@ -75,60 +101,82 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
       <tbody>
         {/* Name + job title */}
         <tr>
-          <td style={{ ...SIGNATURE_STYLES.name, paddingBottom: '0' }}>{name || 'Name'}</td>
-        </tr>
-        <tr>
-          <td style={{ ...SIGNATURE_STYLES.job, paddingBottom: '18px' }}>{job || 'Job Title'}</td>
+          <td style={{ paddingBottom: '10px' }}>
+            <div style={SIGNATURE_STYLES.name}>{name || 'Name'}</div>
+            <div style={SIGNATURE_STYLES.job}>{job || 'Job Title'}</div>
+          </td>
         </tr>
 
-        {/* Contact details */}
+        {/* Primary logo + contact details (side by side) */}
         <tr>
-          <td style={{ paddingBottom: '16px' }}>
+          <td style={{ paddingBottom: '10px' }}>
             <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
               <tbody>
-                <ContactRow label="M">
-                  <ContactLink href={mobileHref} style={MOBILE_LINK}>{mobileDisplay}</ContactLink>
-                </ContactRow>
-                {companyData.phone && (
-                  <ContactRow label="T">
-                    <ContactLink href={companyPhoneHref} style={MOBILE_LINK}>{companyData.phone}</ContactLink>
-                  </ContactRow>
-                )}
-                <ContactRow label="E">
-                  <ContactLink href={`mailto:${email || 'example@aquaticlife.com.au'}`} style={EMAIL_LINK}>
-                    {email || 'example@aquaticlife.com.au'}
-                  </ContactLink>
-                </ContactRow>
+                <tr>
+                  {/* Primary (selected company) logo */}
+                  <td valign="middle" style={{ paddingRight: '20px' }}>
+                    <a href={companyData.logo.href} target="_blank" rel="noopener noreferrer" className="logo-link" style={LOGO_LINK}>
+                      <img
+                        src={companyData.logo.src}
+                        alt={companyData.logo.alt}
+                        width={companyData.logo.width}
+                        height={companyData.logo.height}
+                        border="0"
+                        style={{
+                          width: `${companyData.logo.width}px`,
+                          height: `${companyData.logo.height}px`,
+                          objectFit: 'contain',
+                          display: 'block',
+                          border: 0
+                        }}
+                      />
+                    </a>
+                  </td>
+
+                  {/* Vertical divider */}
+                  <td valign="middle" style={{ paddingRight: '20px' }}>
+                    <div
+                      style={{
+                        width: '1px',
+                        height: `${dividerHeight}px`,
+                        backgroundColor: DIVIDER_COLOR,
+                        fontSize: '1px',
+                        lineHeight: '1px'
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  </td>
+
+                  {/* Contact details */}
+                  <td valign="middle">
+                    <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+                      <tbody>
+                        <ContactRow label="M">
+                          <ContactLink href={mobileHref} style={MOBILE_LINK}>{mobileDisplay}</ContactLink>
+                        </ContactRow>
+                        {companyData.phone && (
+                          <ContactRow label="T">
+                            <ContactLink href={companyPhoneHref} style={PHONE_LINK}>{companyData.phone}</ContactLink>
+                          </ContactRow>
+                        )}
+                        <ContactRow label="E">
+                          <ContactLink href={`mailto:${email || exampleEmail}`} style={EMAIL_LINK}>
+                            {email || exampleEmail}
+                          </ContactLink>
+                        </ContactRow>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </td>
         </tr>
 
-        {/* Primary (selected company) logo */}
-        <tr>
-          <td style={{ paddingBottom: '16px' }}>
-            <a href={companyData.logo.href} target="_blank" rel="noopener noreferrer" className="logo-link" style={LOGO_LINK}>
-              <img
-                src={companyData.logo.src}
-                alt={companyData.logo.alt}
-                width={companyData.logo.width}
-                height={companyData.logo.height}
-                border="0"
-                style={{
-                  width: `${companyData.logo.width}px`,
-                  height: `${companyData.logo.height}px`,
-                  objectFit: 'contain',
-                  display: 'block',
-                  border: 0
-                }}
-              />
-            </a>
-          </td>
-        </tr>
-
         {/* Website + address detail line */}
         <tr>
-          <td style={{ ...SIGNATURE_STYLES.detail, paddingBottom: '16px' }}>
+          <td style={{ ...SIGNATURE_STYLES.detail, paddingBottom: '10px' }}>
             <ContactLink href={companyData.websiteUrl} style={DETAIL_LINK}>{websiteDisplay}</ContactLink>
             {' | '}
             <ContactLink href={mapsHref} style={DETAIL_LINK}>{companyData.address}</ContactLink>
@@ -137,33 +185,16 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
 
         {/* Partner company + brand logos strip */}
         <tr>
-          <td style={{ paddingBottom: '16px' }}>
+          <td style={{ paddingBottom: '10px' }}>
             <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
               <tbody>
                 <tr>
                   {brandStripLogos.map((logo, index) => (
-                    <td
+                    <BrandLogo
                       key={logo.src}
-                      valign="middle"
-                      style={{ paddingRight: index === brandStripLogos.length - 1 ? 0 : '16px' }}
-                    >
-                      <a href={logo.href} target="_blank" rel="noopener noreferrer" className="logo-link" style={LOGO_LINK}>
-                        <img
-                          src={logo.src}
-                          alt={logo.alt}
-                          width={logo.width}
-                          height={logo.height}
-                          border="0"
-                          style={{
-                            width: `${logo.width}px`,
-                            height: `${logo.height}px`,
-                            objectFit: 'contain',
-                            display: 'block',
-                            border: 0
-                          }}
-                        />
-                      </a>
-                    </td>
+                      logo={logo}
+                      paddingRight={index === brandStripLogos.length - 1 ? 0 : '16px'}
+                    />
                   ))}
                 </tr>
               </tbody>
