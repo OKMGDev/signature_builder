@@ -73,15 +73,17 @@ const BrandLogo = ({ logo, paddingRight }) => (
 const SignatureTable = ({ name, job, company, mobile, email }) => {
   const companyData = company && COMPANIES[company] ? COMPANIES[company] : COMPANIES['Aquatic Life Industries'];
   const mobileDigits = mobile ? normalizeAustralianMobileDigits(mobile) : '';
-  const mobileDisplay = mobileDigits ? formatAustralianMobile(mobile) : '0000 000 000';
-  const mobileHref = mobileDigits ? toTelHref(mobile) : null;
+  const hasMobile = Boolean(mobileDigits);
+  const mobileDisplay = hasMobile ? formatAustralianMobile(mobile) : '';
+  const mobileHref = hasMobile ? toTelHref(mobile) : null;
   const companyPhoneHref = toTelHref(companyData.phone);
   const mapsHref = toMapsHref(companyData.address);
   const websiteDisplay = companyData.website.replace(/^www\./i, '');
   const exampleEmail = `example@${websiteDisplay}`;
 
   const brandStripLogos = [companyData.partnerLogo, ...BRAND_LOGOS];
-  const dividerHeight = companyData.phone ? 60 : 40;
+  const contactRowCount = 1 + (hasMobile ? 1 : 0) + (companyData.phone ? 1 : 0);
+  const dividerHeight = contactRowCount === 3 ? 60 : contactRowCount === 2 ? 40 : 22;
 
   return (
     <table
@@ -152,9 +154,11 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
                   <td valign="middle">
                     <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
                       <tbody>
-                        <ContactRow label="M">
-                          <ContactLink href={mobileHref} style={MOBILE_LINK}>{mobileDisplay}</ContactLink>
-                        </ContactRow>
+                        {hasMobile && (
+                          <ContactRow label="M">
+                            <ContactLink href={mobileHref} style={MOBILE_LINK}>{mobileDisplay}</ContactLink>
+                          </ContactRow>
+                        )}
                         {companyData.phone && (
                           <ContactRow label="T">
                             <ContactLink href={companyPhoneHref} style={PHONE_LINK}>{companyData.phone}</ContactLink>

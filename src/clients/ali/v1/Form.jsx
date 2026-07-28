@@ -75,13 +75,13 @@ export default class Form extends Component {
           </div>
         </fieldset>
         <fieldset>
-          <label>Mobile</label>
+          <label>Mobile (optional)</label>
           <input
             type="text"
             id="phone"
             value={mobile}
             onChange={onMobileChange}
-            placeholder="0000 000 000"
+            placeholder="+61 (0) 413 413 413"
           />
         </fieldset>
         <fieldset>

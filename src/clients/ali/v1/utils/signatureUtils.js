@@ -2,37 +2,62 @@
 
 export const stripPhoneDigits = (phone) => phone.replace(/\D/g, '');
 
-// Normalise to local Australian format (leading 0, no +61), e.g. 0412345678.
+// Normalise to national mobile digits without leading 0, e.g. 413413413.
 export const normalizeAustralianMobileDigits = (value) => {
   let digits = stripPhoneDigits(value);
+
+  if (digits === '61') {
+    return '';
+  }
 
   if (digits.startsWith('61') && digits.length > 2) {
     digits = digits.slice(2);
   }
 
-  if (digits && !digits.startsWith('0')) {
-    digits = `0${digits}`;
+  if (digits.startsWith('0')) {
+    digits = digits.slice(1);
   }
 
-  return digits.slice(0, 10);
+  return digits.slice(0, 9);
 };
 
+// Format as +61 (0) XXX XXX XXX, accepting local or international input.
 export const formatAustralianMobile = (value) => {
-  const digits = normalizeAustralianMobileDigits(value);
+  const trimmed = value.trim();
 
-  if (!digits) {
+  if (!trimmed) {
     return '';
   }
 
-  // Group as 0000 000 000
-  return [digits.slice(0, 4), digits.slice(4, 7), digits.slice(7, 10)]
-    .filter(Boolean)
-    .join(' ');
+  const digits = normalizeAustralianMobileDigits(value);
+
+  if (!digits) {
+    if (/^\+61?$/.test(trimmed) || trimmed === '+6') {
+      return trimmed;
+    }
+    if (/^\+61\s*\(0?\)?\s*$/.test(trimmed)) {
+      return trimmed;
+    }
+    return trimmed.startsWith('+') ? '+61' : '';
+  }
+
+  const prefix = '+61 (0) ';
+
+  if (digits.length <= 3) {
+    return `${prefix}${digits}`;
+  }
+
+  if (digits.length <= 6) {
+    return `${prefix}${digits.slice(0, 3)} ${digits.slice(3)}`;
+  }
+
+  return `${prefix}${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
 };
 
 export const toTelHref = (phone) => {
+  if (!phone) return null;
   const digits = normalizeAustralianMobileDigits(phone);
-  return digits ? `tel:${digits}` : null;
+  return digits ? `tel:+61${digits}` : null;
 };
 
 export const copySignatureToClipboard = async () => {
