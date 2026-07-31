@@ -1,0 +1,37 @@
+@import '../../heirloom/v1/FormComponent.scss';
+
+.talent-code-wrapper {
+  border-top: 4px solid #7bb3df;
+
+  .talent-code-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 15px;
+
+    img {
+      display: block;
+      height: 45px;
+      width: 122px;
+    }
+  }
+
+  .signature-preview-footer .button {
+    background: #7bb3df;
+    border: 0;
+    color: #133d5c;
+
+    &:hover {
+      background: #133d5c;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .talent-code-wrapper .signature-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

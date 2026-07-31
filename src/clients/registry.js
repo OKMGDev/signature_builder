@@ -70,6 +70,13 @@ export const CLIENTS = [
     route: '/heirloom',
     version: 'v1',
     versionRoute: '/heirloom/v1'
+  },
+  {
+    slug: 'talent-code',
+    name: 'The Talent Code',
+    route: '/talentcode',
+    version: 'v1',
+    versionRoute: '/talentcode/v1'
   }
 ];
 
