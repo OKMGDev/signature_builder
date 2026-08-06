@@ -77,6 +77,13 @@ export const CLIENTS = [
     route: '/talentcode',
     version: 'v1',
     versionRoute: '/talentcode/v1'
+  },
+  {
+    slug: 'harvest-road',
+    name: 'Harvest Road Group',
+    route: '/harvestroad',
+    version: 'v1',
+    versionRoute: '/harvestroad/v1'
   }
 ];
 

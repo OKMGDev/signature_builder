@@ -1,0 +1,34 @@
+.harvest-road-wrapper {
+  border-top: 4px solid #0b2f61;
+
+  .harvest-road-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 15px;
+
+    img {
+      display: block;
+      height: 40px;
+      width: 154px;
+    }
+  }
+
+  .signature-preview-footer .button {
+    background: #0b2f61;
+    border: 0;
+    color: #fff;
+
+    &:hover {
+      background: #222;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .harvest-road-wrapper .signature-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
