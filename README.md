@@ -44,6 +44,10 @@ Browser
 | SpotOn Group | `/spoton` |
 | New Me | `/newme` |
 | Hair Supplies | `/hairsupplies` |
+| Heirloom Honey Co. | `/heirloom` |
+| The Talent Code | `/talentcode` |
+| Harvest Road Group | `/harvestroad` |
+| Western Honey Supplies | `/westernhoneysupplies` |
 
 Versioned routes (e.g. `/pureleasing/v1`) pin a frozen layout. The homepage at `/` lists all clients and is password-protected.
 

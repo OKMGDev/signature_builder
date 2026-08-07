@@ -84,6 +84,13 @@ export const CLIENTS = [
     route: '/harvestroad',
     version: 'v1',
     versionRoute: '/harvestroad/v1'
+  },
+  {
+    slug: 'western-honey-supplies',
+    name: 'Western Honey Supplies',
+    route: '/westernhoneysupplies',
+    version: 'v1',
+    versionRoute: '/westernhoneysupplies/v1'
   }
 ];
 
