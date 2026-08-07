@@ -9,26 +9,28 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Suspense fallback={<div className="loading">Loading signature generator...</div>}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            {CLIENT_ROUTES.flatMap((client) => [
-              <Route
-                key={client.route}
-                exact
-                path={client.route}
-                component={client.component}
-              />,
-              <Route
-                key={client.versionRoute}
-                exact
-                path={client.versionRoute}
-                component={client.component}
-              />
-            ])}
-            <Route component={NotFound} />
-          </Switch>
-        </Suspense>
+        <main className="app-main">
+          <Suspense fallback={<div className="loading">Loading signature generator...</div>}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              {CLIENT_ROUTES.flatMap((client) => [
+                <Route
+                  key={client.route}
+                  exact
+                  path={client.route}
+                  component={client.component}
+                />,
+                <Route
+                  key={client.versionRoute}
+                  exact
+                  path={client.versionRoute}
+                  component={client.component}
+                />
+              ])}
+              <Route component={NotFound} />
+            </Switch>
+          </Suspense>
+        </main>
         <footer className="app-footer">
           Developed by{' '}
           <a href="https://www.okmg.com/" target="_blank" rel="noopener noreferrer">OKMG</a>

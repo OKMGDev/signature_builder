@@ -14,6 +14,30 @@ $white: #fff;
   width: 100%;
 }
 
+.app-main {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  padding: 24px 16px;
+  box-sizing: border-box;
+
+  // auto margins centre on both axes and, unlike align-items: center, still
+  // allow scrolling to the top when the card is taller than the viewport
+  > * {
+    margin: auto;
+    // the card sets width: 100% at narrow breakpoints, so without this its
+    // padding is added on top and it sits off-centre
+    box-sizing: border-box;
+  }
+
+  // the card's own breakpoints set a fixed horizontal margin, which outweighs
+  // the auto margins above and leaves it sitting off-centre on small screens
+  > .wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .loading {
   padding: 40px;
   color: #666;
@@ -23,6 +47,7 @@ $white: #fff;
   margin-top: auto;
   width: 100%;
   padding: 24px 16px;
+  box-sizing: border-box;
   text-align: center;
   font-size: 13px;
   color: #8d8d8d;
