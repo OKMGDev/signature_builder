@@ -63,7 +63,7 @@ const SignatureTable = ({ name, job, mobile, phone, email }) => {
     >
       <tbody>
         <tr>
-          <td style={SIGNATURE_STYLES.name}>{name || 'Name John'}</td>
+          <td style={SIGNATURE_STYLES.name}>{name || 'Your Name'}</td>
         </tr>
         <tr>
           <td style={{ ...SIGNATURE_STYLES.job, paddingBottom: '10px' }}>
