@@ -3,7 +3,7 @@ import '../../heirloom/v1/FormComponent.scss';
 import './FormComponent.scss';
 import SignaturePreview from './SignaturePreview';
 import COMPANY from './constants/companyData';
-import { formatPhone } from './utils/signatureUtils';
+import { formatLandline, formatMobile } from './utils/signatureUtils';
 
 export default class FormComponent extends React.Component {
   state = {
@@ -17,9 +17,9 @@ export default class FormComponent extends React.Component {
   };
 
   updateField = (field) => (event) => {
-    const value = field === 'mobile' || field === 'phone'
-      ? formatPhone(event.target.value)
-      : event.target.value;
+    let value = event.target.value;
+    if (field === 'mobile') value = formatMobile(value);
+    if (field === 'phone') value = formatLandline(value);
     this.setState({ [field]: value });
   };
 
@@ -58,8 +58,8 @@ export default class FormComponent extends React.Component {
           <form>
             {this.renderField('Name', 'name', 'Enter your name')}
             {this.renderField('Job Title', 'job', 'Enter your job title')}
-            {this.renderField('Mobile', 'mobile', '+61 4 0000 0000', 'tel')}
-            {this.renderField('Phone', 'phone', '+61 8 0000 0000', 'tel')}
+            {this.renderField('Mobile', 'mobile', '+61 477 779 336', 'tel')}
+            {this.renderField('Phone', 'phone', '+61 8 9335 1244', 'tel')}
             {this.renderField('Email', 'email', 'name@harvestroad.com', 'email')}
           </form>
 

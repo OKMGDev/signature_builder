@@ -1,26 +1,42 @@
 export const stripPhoneDigits = (phone) => phone.replace(/\D/g, '');
 
-export const formatPhone = (value) => {
-  const trimmed = value.replace(/[^\d+]/g, '');
+const toNationalNineDigits = (value) => {
+  let digits = stripPhoneDigits(value);
 
-  if (trimmed.startsWith('+61')) {
-    const local = trimmed.slice(3).replace(/^0/, '').slice(0, 9);
-    return `+61 ${[local.slice(0, 1), local.slice(1, 5), local.slice(5, 9)]
-      .filter(Boolean)
-      .join(' ')}`;
+  if (digits.startsWith('61')) {
+    digits = digits.slice(2);
   }
 
-  const digits = stripPhoneDigits(value).slice(0, 10);
-  if (digits.startsWith('04')) {
-    return [digits.slice(0, 4), digits.slice(4, 7), digits.slice(7, 10)]
-      .filter(Boolean)
-      .join(' ');
+  if (digits.startsWith('0')) {
+    digits = digits.slice(1);
   }
 
-  return [digits.slice(0, 2), digits.slice(2, 6), digits.slice(6, 10)]
-    .filter(Boolean)
-    .join(' ');
+  return digits.slice(0, 9);
 };
+
+/** Mobile: +61 477 779 336 */
+export const formatMobile = (value) => {
+  const digits = toNationalNineDigits(value);
+  if (!digits) return '';
+
+  return `+61 ${[digits.slice(0, 3), digits.slice(3, 6), digits.slice(6, 9)]
+    .filter(Boolean)
+    .join(' ')}`;
+};
+
+/** Landline: +61 8 9335 1244 */
+export const formatLandline = (value) => {
+  const digits = toNationalNineDigits(value);
+  if (!digits) return '';
+
+  return `+61 ${[digits.slice(0, 1), digits.slice(1, 5), digits.slice(5, 9)]
+    .filter(Boolean)
+    .join(' ')}`;
+};
+
+export const formatPhone = (value, type = 'landline') => (
+  type === 'mobile' ? formatMobile(value) : formatLandline(value)
+);
 
 export const toTelHref = (phone) => {
   const trimmed = phone.trim();

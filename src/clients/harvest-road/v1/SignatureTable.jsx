@@ -41,8 +41,8 @@ const Logo = ({ logo }) => (
 );
 
 const SignatureTable = ({ name, job, mobile, phone, email }) => {
-  const mobileDisplay = mobile || '+61 4 0000 0000';
-  const phoneDisplay = phone || '+61 8 0000 0000';
+  const mobileDisplay = mobile || '+61 477 779 336';
+  const phoneDisplay = phone || '+61 8 9335 1244';
   const emailDisplay = email || 'name@harvestroad.com';
 
   return (
