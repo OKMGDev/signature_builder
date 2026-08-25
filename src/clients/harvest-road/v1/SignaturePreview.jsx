@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InstallationModal from '../../../shared/InstallationModal';
+import SignatureHelpButton from '../../../shared/SignatureHelpButton';
 import SignatureTable from './SignatureTable';
 import {
   copySignatureToClipboard,
@@ -52,6 +53,7 @@ export default class SignaturePreview extends Component {
           >
             Installation Instruction
           </button>
+          <SignatureHelpButton />
         </div>
 
         <InstallationModal

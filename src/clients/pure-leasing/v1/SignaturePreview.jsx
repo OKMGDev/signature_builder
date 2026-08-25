@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InstallationModal from '../../../shared/InstallationModal';
+import SignatureHelpButton from '../../../shared/SignatureHelpButton';
 import SignatureTable from './SignatureTable';
 import { copySignatureToClipboard, copySignatureCodeToClipboard, downloadSignatureAsHTML } from './utils/signatureUtils';
 
@@ -72,6 +73,7 @@ export default class SignaturePreview extends Component {
           <button className="button" onClick={this.handleCopyCode}>Copy Code</button>
           <button className="button" onClick={this.handleDownload}>Download</button>
           <button className="button" onClick={this.openInstallationModal}>Installation Instruction</button>
+          <SignatureHelpButton />
         </div>
 
         {/* Installation Instructions Modal */}
