@@ -22,6 +22,15 @@ const Home = () => {
       <div className="home-page">
         <h1>OKMG Signature Generators</h1>
         <p>Select a client to open their email signature generator.</p>
+        <p className="home-help">
+          <a
+            href="https://www.okmg.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Need help?
+          </a>
+        </p>
 
         <div className="client-search">
           <label htmlFor="client-search" className="visually-hidden">Search clients</label>

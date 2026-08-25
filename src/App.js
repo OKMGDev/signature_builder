@@ -32,6 +32,8 @@ function App() {
           </Suspense>
         </main>
         <footer className="app-footer">
+          <a href="https://www.okmg.com/contact" target="_blank" rel="noopener noreferrer">Need help?</a>
+          <span className="app-footer-sep" aria-hidden="true">·</span>
           Developed by{' '}
           <a href="https://www.okmg.com/" target="_blank" rel="noopener noreferrer">OKMG</a>
         </footer>

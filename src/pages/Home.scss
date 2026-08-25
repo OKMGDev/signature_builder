@@ -1,5 +1,5 @@
 .home-page {
-  max-width: 1080px;
+  max-width: 880px;
   width: 100%;
   margin: 0 auto;
   padding: 40px 20px;
@@ -13,6 +13,21 @@
   > p {
     color: #666;
     margin-bottom: 24px;
+  }
+
+  > p.home-help {
+    margin-top: -12px;
+    margin-bottom: 24px;
+
+    a {
+      color: #265aa8;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
@@ -49,7 +64,7 @@
 
 .client-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   list-style: none;
   padding: 0;
@@ -62,18 +77,18 @@
 
   a {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 14px;
+    gap: 16px;
     height: 100%;
-    padding: 24px 16px 20px;
+    padding: 16px 18px;
     background: #f5f5f5;
     border-radius: 10px;
     color: #111;
     text-decoration: none;
     font-weight: 500;
-    text-align: center;
+    text-align: left;
     box-sizing: border-box;
     transition: background 0.2s, transform 0.15s;
 
@@ -85,8 +100,9 @@
 }
 
 .client-logo {
-  width: 100%;
-  height: 72px;
+  flex: 0 0 72px;
+  width: 72px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,17 +118,12 @@
 }
 
 .client-name {
+  flex: 1;
   min-width: 0;
   line-height: 1.35;
 }
 
-@media (max-width: 800px) {
-  .client-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 520px) {
+@media (max-width: 560px) {
   .client-list {
     grid-template-columns: 1fr;
   }
