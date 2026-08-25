@@ -1,0 +1,37 @@
+@import '../../heirloom/v1/FormComponent.scss';
+
+.ndsa-wrapper {
+  border-top: 4px solid #0B178A;
+
+  .ndsa-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 15px;
+
+    img {
+      display: block;
+      height: 42px;
+      width: 226px;
+    }
+  }
+
+  .signature-preview-footer .button {
+    background: #0B178A;
+    border: 0;
+    color: #fff;
+
+    &:hover {
+      background: #5AA6C8;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .ndsa-wrapper .signature-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
