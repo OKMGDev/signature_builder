@@ -1,0 +1,51 @@
+@import '../../heirloom/v1/FormComponent.scss';
+
+.frigtech-wrapper {
+  border-top: 4px solid #003163;
+
+  .frigtech-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+
+    img {
+      display: block;
+      max-height: 48px;
+      width: auto;
+      max-width: 220px;
+    }
+  }
+
+  .welcome-text {
+    text-align: left;
+    max-width: 640px;
+    margin-bottom: 8px;
+
+    p {
+      margin: 0 0 8px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .signature-preview-footer .button {
+    background: #003163;
+    border: 0;
+    color: #fff;
+
+    &:hover {
+      background: #52B92D;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .frigtech-wrapper .signature-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

@@ -113,6 +113,14 @@ export const CLIENTS = [
     version: 'v1',
     versionRoute: '/ndsa/v1',
     logo: 'logo.png'
+  },
+  {
+    slug: 'frigtech',
+    name: 'FRIGTECH',
+    route: '/frigtech',
+    version: 'v1',
+    versionRoute: '/frigtech/v1',
+    logo: 'frigtech.jpg'
   }
 ].map((client) => ({
   ...client,
