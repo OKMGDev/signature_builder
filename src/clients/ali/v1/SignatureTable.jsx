@@ -97,7 +97,8 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
         color: '#111111',
         fontSize: '12px',
         lineHeight: '18px',
-        width: '454px'
+        width: '454px',
+        borderRadius: 0
       }}
     >
       <tbody>
@@ -112,7 +113,7 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
         {/* Primary logo + contact details (side by side) */}
         <tr>
           <td style={{ paddingBottom: '10px' }}>
-            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse', borderRadius: 0 }}>
               <tbody>
                 <tr>
                   {/* Primary (selected company) logo */}
@@ -152,7 +153,7 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
 
                   {/* Contact details */}
                   <td valign="middle">
-                    <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+                    <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse', borderRadius: 0 }}>
                       <tbody>
                         {hasMobile && (
                           <ContactRow label="M">
@@ -190,7 +191,7 @@ const SignatureTable = ({ name, job, company, mobile, email }) => {
         {/* Partner company + brand logos strip */}
         <tr>
           <td style={{ paddingBottom: '10px' }}>
-            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse', borderRadius: 0 }}>
               <tbody>
                 <tr>
                   {brandStripLogos.map((logo, index) => (

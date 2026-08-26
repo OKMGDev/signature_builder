@@ -12,6 +12,7 @@ const NO_BORDER = {
 
 const TABLE_STYLE = {
   borderCollapse: 'collapse',
+  borderRadius: 0,
   ...NO_BORDER
 };
 

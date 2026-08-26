@@ -17,7 +17,8 @@ const SignatureTable = ({ name, job, mobile, email, meetingSchedule }) => {
         color: 'rgb(0, 0, 0)',
         fontSize: '14px',
         lineHeight: '16px',
-        width: '520px'
+        width: '520px',
+        borderRadius: 0
       }}
     >
       <tbody>
@@ -54,7 +55,8 @@ const SignatureTable = ({ name, job, mobile, email, meetingSchedule }) => {
               cellSpacing="0"
               cellPadding="0"
               style={{
-                width: '100%'
+                width: '100%',
+                borderRadius: 0
               }}
             >
               <tbody>

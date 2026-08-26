@@ -2,7 +2,7 @@ import React from 'react';
 import COMPANY, { RULE_COLOR, SIGNATURE_STYLES } from './constants/companyData';
 import { toTelHref } from './utils/signatureUtils';
 
-const TABLE_RESET = { borderCollapse: 'collapse', borderSpacing: '0' };
+const TABLE_RESET = { borderCollapse: 'collapse', borderSpacing: '0', borderRadius: 0 };
 
 const ContactRow = ({ label, href, children }) => (
   <tr>

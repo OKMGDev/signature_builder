@@ -57,7 +57,8 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         color: TEXT_BLACK,
         fontSize: '12px',
         lineHeight: '18px',
-        width: '454px'
+        width: '454px',
+        borderRadius: 0
       }}
     >
       <tbody>
@@ -72,7 +73,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         {/* Accent rule */}
         <tr>
           <td style={{ paddingBottom: '14px' }}>
-            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse', borderRadius: 0 }}>
               <tbody>
                 <tr>
                   <td
@@ -96,7 +97,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         {/* Contact details: Mobile / Email / Website / Address */}
         <tr>
           <td style={{ paddingBottom: '18px' }}>
-            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse', borderRadius: 0 }}>
               <tbody>
                 <ContactRow label="M">
                   <ContactLink href={mobileHref} style={CONTACT_LINK}>{mobileDisplay}</ContactLink>
@@ -141,7 +142,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         {/* Accreditation badges */}
         <tr>
           <td style={{ paddingBottom: '18px' }}>
-            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse', borderRadius: 0 }}>
               <tbody>
                 <tr>
                   {companyData.badges.map((badge, index) => (

@@ -32,7 +32,8 @@ const SignatureTable = ({ name, job, selectedCompanies, mobile, email }) => {
         color: 'rgb(0, 0, 0)',
         fontSize: '14px',
         lineHeight: '16px',
-        width: '520px'
+        width: '520px',
+        borderRadius: 0
       }}
     >
       <tbody>

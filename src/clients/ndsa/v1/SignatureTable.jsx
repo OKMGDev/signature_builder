@@ -44,6 +44,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
       style={{
         borderCollapse: 'collapse',
         borderSpacing: '0',
+        borderRadius: 0,
         color: '#1a1a1a',
         fontFamily: 'Arial, Helvetica, sans-serif',
         textAlign: 'left',
@@ -58,7 +59,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
               border="0"
               cellPadding="0"
               cellSpacing="0"
-              style={{ borderCollapse: 'collapse', borderSpacing: '0' }}
+              style={{ borderCollapse: 'collapse', borderSpacing: '0', borderRadius: 0 }}
             >
               <tbody>
                 <tr>
@@ -76,7 +77,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
               border="0"
               cellPadding="0"
               cellSpacing="0"
-              style={{ borderCollapse: 'collapse', borderSpacing: '0' }}
+              style={{ borderCollapse: 'collapse', borderSpacing: '0', borderRadius: 0 }}
             >
               <tbody>
                 <ContactRow label="M" href={toTelHref(mobile) || 'tel:0000000000'}>

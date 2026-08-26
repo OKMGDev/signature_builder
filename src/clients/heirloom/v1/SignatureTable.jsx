@@ -55,7 +55,8 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         color: '#111111',
         fontSize: '12px',
         lineHeight: '18px',
-        width: '454px'
+        width: '454px',
+        borderRadius: 0
       }}
     >
       <tbody>
@@ -70,7 +71,7 @@ const SignatureTable = ({ name, job, mobile, email }) => {
         {/* Contact details: Mobile / Email / Website */}
         <tr>
           <td style={{ paddingBottom: '18px' }}>
-            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse' }}>
+            <table cellSpacing="0" cellPadding="0" style={{ borderCollapse: 'collapse', borderRadius: 0 }}>
               <tbody>
                 <ContactRow label="M">
                   <ContactLink href={mobileHref} style={CONTACT_LINK}>{mobileDisplay}</ContactLink>
