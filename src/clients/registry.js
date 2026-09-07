@@ -121,6 +121,14 @@ export const CLIENTS = [
     version: 'v1',
     versionRoute: '/frigtech/v1',
     logo: 'frigtech.jpg'
+  },
+  {
+    slug: 'sports-surfaces',
+    name: 'Sports Surfaces',
+    route: '/sportssurfaces',
+    version: 'v1',
+    versionRoute: '/sportssurfaces/v1',
+    logo: 'SS_LOGO.png'
   }
 ].map((client) => ({
   ...client,

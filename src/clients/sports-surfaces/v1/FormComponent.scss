@@ -1,0 +1,49 @@
+@import '../../heirloom/v1/FormComponent.scss';
+
+.sports-surfaces-wrapper {
+  .sports-surfaces-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+
+    img {
+      display: block;
+      max-height: 48px;
+      width: auto;
+      max-width: 220px;
+    }
+  }
+
+  .welcome-text {
+    text-align: left;
+    max-width: 640px;
+    margin-bottom: 8px;
+
+    p {
+      margin: 0 0 8px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .signature-preview-footer .button {
+    background: #013334;
+    border: 0;
+    color: #fff;
+
+    &:hover {
+      background: #00d061;
+      color: #013334;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .sports-surfaces-wrapper .signature-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
