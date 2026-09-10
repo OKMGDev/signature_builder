@@ -32,7 +32,6 @@ const SignatureTable = ({ name, job }) => {
     >
       <tbody>
         <tr>
-          {/* Left column: name, job title, logo */}
           <td
             valign="top"
             width="230"
@@ -40,6 +39,30 @@ const SignatureTable = ({ name, job }) => {
           >
             <div style={SIGNATURE_STYLES.name}>{name || 'Name'}</div>
             <div style={SIGNATURE_STYLES.job}>{job || 'Job Title'}</div>
+          </td>
+          <td
+            valign="top"
+            width="340"
+            style={{ verticalAlign: 'top', width: '340px', paddingLeft: '0px' }}
+          >
+            <div style={SIGNATURE_STYLES.phone}>{COMPANY.phone}</div>
+            <div style={SIGNATURE_STYLES.address}>
+              {COMPANY.addressLines.map((line, index) => (
+                <React.Fragment key={line}>
+                  {index > 0 && <br />}
+                  {line}
+                </React.Fragment>
+              ))}
+            </div>
+            <div style={SIGNATURE_STYLES.abn}>{COMPANY.abn}</div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            valign="bottom"
+            width="230"
+            style={{ verticalAlign: 'bottom', width: '230px', paddingRight: '0px' }}
+          >
             <a href={logo.href} target="_blank" rel="noopener noreferrer" style={LOGO_LINK}>
               <img
                 src={logo.src}
@@ -56,24 +79,11 @@ const SignatureTable = ({ name, job }) => {
               />
             </a>
           </td>
-
-          {/* Right column: contact details, website button, social icons */}
           <td
-            valign="top"
+            valign="bottom"
             width="340"
-            style={{ verticalAlign: 'top', width: '340px', paddingLeft: '0px' }}
+            style={{ verticalAlign: 'bottom', width: '340px', paddingLeft: '0px' }}
           >
-            <div style={SIGNATURE_STYLES.phone}>{COMPANY.phone}</div>
-            <div style={SIGNATURE_STYLES.address}>
-              {COMPANY.addressLines.map((line, index) => (
-                <React.Fragment key={line}>
-                  {index > 0 && <br />}
-                  {line}
-                </React.Fragment>
-              ))}
-            </div>
-            <div style={SIGNATURE_STYLES.abn}>{COMPANY.abn}</div>
-
             <table
               cellPadding="0"
               cellSpacing="0"

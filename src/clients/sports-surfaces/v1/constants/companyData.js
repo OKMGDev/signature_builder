@@ -70,21 +70,21 @@ export const SIGNATURE_STYLES = {
     fontFamily: BODY_FONT,
     fontWeight: 'bold',
     fontSize: '14px',
-    lineHeight: '22px',
+    lineHeight: '18px',
     color: SS_TEAL
   },
   address: {
     fontFamily: BODY_FONT,
     fontWeight: 'bold',
     fontSize: '14px',
-    lineHeight: '22px',
+    lineHeight: '18px',
     color: SS_TEAL
   },
   abn: {
     fontFamily: BODY_FONT,
     fontWeight: 'bold',
     fontSize: '14px',
-    lineHeight: '22px',
+    lineHeight: '18px',
     color: SS_SLATE,
     marginBottom: '10px'
   },
