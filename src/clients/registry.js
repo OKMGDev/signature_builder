@@ -129,6 +129,14 @@ export const CLIENTS = [
     version: 'v1',
     versionRoute: '/sportssurfaces/v1',
     logo: 'SS_LOGO.png'
+  },
+  {
+    slug: 'churchlands',
+    name: 'Churchlands Plumbing and Gas',
+    route: '/churchlands',
+    version: 'v1',
+    versionRoute: '/churchlands/v1',
+    logo: 'logo.png'
   }
 ].map((client) => ({
   ...client,

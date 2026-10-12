@@ -1,0 +1,55 @@
+@import '../../heirloom/v1/FormComponent.scss';
+
+.churchlands-wrapper {
+  .churchlands-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+
+    img {
+      display: block;
+      height: auto;
+      width: 230px;
+      max-width: 100%;
+    }
+  }
+
+  .welcome-text {
+    text-align: left;
+    max-width: 640px;
+    margin-bottom: 8px;
+
+    p {
+      margin: 0 0 8px;
+      color: #202020;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .signature-preview-footer .button {
+    background: #202020;
+    border: 0;
+    color: #fff;
+
+    &:hover {
+      background: #fbb702;
+      color: #202020;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .churchlands-wrapper.wrapper {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 576px) {
+  .churchlands-wrapper .signature-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
