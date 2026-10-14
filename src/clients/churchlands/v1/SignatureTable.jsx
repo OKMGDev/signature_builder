@@ -59,13 +59,13 @@ const SignatureTable = ({ name, job, phone, email }) => {
       cellPadding="0"
       cellSpacing="0"
       border="0"
-      width={580}
+      width={600}
       style={{
         ...TABLE_RESET,
         fontFamily: FONT,
         textAlign: 'left',
         color: INK,
-        width: '580px',
+        width: '600px',
         backgroundColor: '#ffffff'
       }}
     >
@@ -73,10 +73,10 @@ const SignatureTable = ({ name, job, phone, email }) => {
         <tr>
           <td
             valign="top"
-            width="230"
+            width="250"
             style={{
               verticalAlign: 'top',
-              width: '230px',
+              width: '250px',
               padding: '0'
             }}
           >

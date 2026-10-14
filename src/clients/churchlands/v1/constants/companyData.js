@@ -19,11 +19,11 @@ export const COMPANY = {
   website: 'churchlandsplumbingandgas.com.au',
   websiteUrl: WEBSITE_URL,
   logo: {
-    src: asset('logo.png'),
+    src: asset('logo-white.png'),
     alt: 'Churchlands Plumbing and Gas',
     href: WEBSITE_URL,
-    width: 230,
-    height: 85
+    width: 250,
+    height: 105
   },
   licenses: [
     ['Gas License', 'GF018425'],

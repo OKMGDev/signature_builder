@@ -136,7 +136,7 @@ export const CLIENTS = [
     route: '/churchlands',
     version: 'v1',
     versionRoute: '/churchlands/v1',
-    logo: 'logo.png'
+    logo: 'logo-white.png'
   }
 ].map((client) => ({
   ...client,
