@@ -1,0 +1,59 @@
+@import '../../heirloom/v1/FormComponent.scss';
+
+.gilkison-wrapper {
+  .gilkison-heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+
+    img {
+      display: block;
+      height: auto;
+      width: 180px;
+      max-width: 100%;
+    }
+  }
+
+  .signature-section-wrapper {
+    margin-top: 80px;
+  }
+
+  .welcome-text {
+    text-align: left;
+    max-width: 640px;
+    margin-bottom: 8px;
+
+    p {
+      margin: 0 0 8px;
+      color: #212121;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .signature-preview-footer .button {
+    background: #14274b;
+    border: 0;
+    color: #fff;
+
+    &:hover {
+      background: #ee864e;
+      color: #14274b;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .gilkison-wrapper.wrapper {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 576px) {
+  .gilkison-wrapper .signature-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

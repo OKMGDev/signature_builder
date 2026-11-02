@@ -137,6 +137,14 @@ export const CLIENTS = [
     version: 'v1',
     versionRoute: '/churchlands/v1',
     logo: 'logo-white.png'
+  },
+  {
+    slug: 'gilkison',
+    name: 'Gilkison Group',
+    route: '/gilkison',
+    version: 'v1',
+    versionRoute: '/gilkison/v1',
+    logo: 'logo.png'
   }
 ].map((client) => ({
   ...client,
