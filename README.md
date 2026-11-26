@@ -48,6 +48,12 @@ Browser
 | The Talent Code | `/talentcode` |
 | Harvest Road Group | `/harvestroad` |
 | Western Honey Supplies | `/westernhoneysupplies` |
+| Notre Dame Student Association | `/ndsa` |
+| FRIGTECH | `/frigtech` |
+| Sports Surfaces | `/sportssurfaces` |
+| Churchlands Plumbing and Gas | `/churchlands` |
+| Gilkison Group | `/gilkison` |
+| HiVo | `/hivo` |
 
 Versioned routes (e.g. `/pureleasing/v1`) pin a frozen layout. The homepage at `/` lists all clients and is password-protected.
 

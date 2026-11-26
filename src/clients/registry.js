@@ -145,6 +145,14 @@ export const CLIENTS = [
     version: 'v1',
     versionRoute: '/gilkison/v1',
     logo: 'logo.png'
+  },
+  {
+    slug: 'hivo',
+    name: 'HiVo',
+    route: '/hivo',
+    version: 'v1',
+    versionRoute: '/hivo/v1',
+    logo: 'logo.png'
   }
 ].map((client) => ({
   ...client,
