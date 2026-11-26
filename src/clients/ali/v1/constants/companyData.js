@@ -26,7 +26,8 @@ const STA_LOGO_BLACK = { src: logo('sta-black.jpg'), alt: 'Southern Trading Aust
 export const BRAND_LOGOS = [
   { src: logo('crystal-crab-black.jpg'), alt: 'West Australian Crystal Crab', href: 'https://crystalcrab.com.au/', w: 845, h: 221 },
   { src: logo('shark-bay-blue-black.jpg'), alt: 'Shark Bay Blue', href: 'https://sharkbayblue.com.au/', w: 408, h: 269 },
-  { src: logo('vongole-black.jpg'), alt: 'Shark Bay Vongole', href: 'https://sharkbayvongole.com.au/', w: 434, h: 237 }
+  { src: logo('vongole-black.jpg'), alt: 'Shark Bay Vongole', href: 'https://sharkbayvongole.com.au/', w: 434, h: 237 },
+  { src: logo('buccaneer-black.jpg'), alt: 'Buccaneer Mackerel', href: 'https://buccaneermackerel.com.au/', w: 130, h: 40 }
 ].map((item) => sized(item, BRAND_LOGO_HEIGHT));
 
 export const COMPANIES = {
