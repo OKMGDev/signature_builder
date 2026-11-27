@@ -14,8 +14,8 @@ const sized = (logoDef, targetHeight) => ({
   width: Math.round((logoDef.w / logoDef.h) * targetHeight)
 });
 
-const ALI_URL = 'https://aquaticlife.com.au/';
-const STA_URL = 'https://southerntrading.com.au/';
+const ALI_URL = 'https://aquaticlife.com.au/?utm_source=email_signature&utm_medium=email';
+const STA_URL = 'https://southerntrading.com.au/?utm_source=email_signature&utm_medium=email';
 
 const ALI_LOGO = { src: logo('ali.jpg'), alt: 'Aquatic Life Industries', href: ALI_URL, w: 256, h: 65 };
 const STA_LOGO = { src: logo('sta.jpg'), alt: 'Southern Trading Australia', href: STA_URL, w: 147, h: 62 };
@@ -24,10 +24,10 @@ const ALI_LOGO_BLACK = { src: logo('ali-black.jpg'), alt: 'Aquatic Life Industri
 const STA_LOGO_BLACK = { src: logo('sta-black.jpg'), alt: 'Southern Trading Australia', href: STA_URL, w: 636, h: 269 };
 
 export const BRAND_LOGOS = [
-  { src: logo('crystal-crab-black.jpg'), alt: 'West Australian Crystal Crab', href: 'https://crystalcrab.com.au/', w: 845, h: 221 },
-  { src: logo('shark-bay-blue-black.jpg'), alt: 'Shark Bay Blue', href: 'https://sharkbayblue.com.au/', w: 408, h: 269 },
-  { src: logo('vongole-black.jpg'), alt: 'Shark Bay Vongole', href: 'https://sharkbayvongole.com.au/', w: 434, h: 237 },
-  { src: logo('buccaneer-black.jpg'), alt: 'Buccaneer Mackerel', href: 'https://buccaneermackerel.com.au/', w: 130, h: 40 }
+  { src: logo('crystal-crab-black.jpg'), alt: 'West Australian Crystal Crab', href: 'https://crystalcrab.com.au/?utm_source=email_signature&utm_medium=email', w: 845, h: 221 },
+  { src: logo('shark-bay-blue-black.jpg'), alt: 'Shark Bay Blue', href: 'https://sharkbayblue.com.au/?utm_source=email_signature&utm_medium=email', w: 408, h: 269 },
+  { src: logo('vongole-black.jpg'), alt: 'Shark Bay Vongole', href: 'https://sharkbayvongole.com.au/?utm_source=email_signature&utm_medium=email', w: 434, h: 237 },
+  { src: logo('buccaneer-black.jpg'), alt: 'Buccaneer Mackerel', href: 'https://buccaneermackerel.com.au/?utm_source=email_signature&utm_medium=email', w: 130, h: 40 }
 ].map((item) => sized(item, BRAND_LOGO_HEIGHT));
 
 export const COMPANIES = {
